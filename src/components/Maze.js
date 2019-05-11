@@ -16,7 +16,8 @@ class Maze extends Component{
             testing: false,
             clicked: true,
             finishShowing:'inline',
-            submitShowing:'none'
+            submitShowing:'none',
+            maze:[]
             
         }
     }
@@ -70,13 +71,20 @@ class Maze extends Component{
     });
         const parsedResponse = await loginResponse.json();
         console.log(parsedResponse)}
+    
+    pushValueUp = (brick) => {
+        this.state.maze.push(brick)
+        this.setState({
+            maze:this.state.maze
+        })
+    }
         
   render(){
       const arrayOne= new Array(6400).fill('hello')
       
     const movieList = arrayOne.map((movie, i) => {
         return (
-            <Square clicked = {this.state.clicked} key={i} name="brick" button={this.state.buttonClicked} color={this.state.colorToChangeMaze} className= 'cell'/>
+            <Square pushValueUp = {this.pushValueUp} scar={i} clicked = {this.state.clicked} key={i} name="brick" button={this.state.buttonClicked} color={this.state.colorToChangeMaze} className= 'cell'/>
           )
       })
       return (
@@ -103,6 +111,7 @@ class Square extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            scar: this.props.scar,
           color: 'white',
           colorToChange:null,
           changeColor: false,
@@ -120,7 +129,7 @@ class Square extends Component{
         (this.state.colorToChange=='black' && this.props.button!= 'red') && this.setState({
             value: 1
         })
-        this.props.pushValueUp(this.state.value)
+        this.props.pushValueUp(this.state.scar)
         this.setState({
             changeColor:true,
             colorToChange:this.props.button})
