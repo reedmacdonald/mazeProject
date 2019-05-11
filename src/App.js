@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavBar from './components/NavBar'
+import Login from './components/Login'
+import ShowUser from './components/ShowUser'
+import WelcomePage from './components/welcomePage'
+import TopMazes from './components/bestOf'
+
+
+import * as routes from './constants/routes'
+import './App.css';
+import Maze from './components/Maze';
+
+class App extends Component {
+  state = {
+    currentUser: null
+  }
+
+  doSetCurrentUser = user =>
+    this.setState({
+      currentUser: user
+    })
+
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+      <div>
+        <NavBar currentUser={this.state.currentUser}/>
+        <Switch>
+          <Route exact path={routes.BEST} render={() => <TopMazes/>} />
+          <Route exact path={routes.MAZES} render={() => <Maze/>} />
+          <Route exact path={routes.WELCOME} render={() => <WelcomePage/>} />
+          <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
+          <Route exact path={routes.LOGIN} render={() => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
+          <Route render={() => <div>NOT FOUND</div>} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
+
+
 export default App;
+
+

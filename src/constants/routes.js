@@ -1,0 +1,8 @@
+export const ROOT  = '/'
+export const HOME = '/home'
+export const POSTS = '/posts'
+export const USERS = '/users'
+export const LOGIN = '/login'
+export const MAZES = '/mazes'
+export const WELCOME = '/welcome'
+export const BEST = '/best'

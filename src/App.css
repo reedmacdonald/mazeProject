@@ -1,3 +1,9 @@
+* {
+  margin:0;
+  padding:0;
+  border:0;
+}
+
 .App {
   text-align: center;
 }
@@ -30,4 +36,74 @@
   to {
     transform: rotate(360deg);
   }
+}
+.grid {
+  display: flex;                       /* establish flex container */
+  flex-wrap: wrap;                     /* enable flex items to wrap */
+  width: 400px;
+  height: 400px;
+  border:1px solid black;
+  margin:0;
+  border: 0;
+  padding: 0
+}
+
+.outOfBounds {
+  width:30px;
+  height:500px;
+  margin: 0;
+  background-color: #61dafb;
+  float:left;
+  margin-left: 485px;
+  
+}
+
+.outOfBoundsTwo {
+  width:30px;
+  height:500px;
+  margin: 0;
+  background-color: #61dafb;
+  float: right;
+  margin-right:485px
+}
+
+input {
+  outline:none;
+}
+.cell {
+  flex: 0 0 32%;                       /* don't grow, don't shrink, width */
+  background-color: #999;
+  width:5px;
+  height:5px;
+  margin:0;
+  padding: 0;
+}
+
+.logins {
+  height:50px;
+  width:50px;
+  background-color: #61dafb;
+  outline: #282c34;
+  border:solid black 1px;
+  margin:10px;
+
+}
+
+button {
+  border: solid black;
+  margin: 0;
+  padding:0;
+}
+
+.finishMaze {
+  width:402px
+}
+
+.startEndButton{
+  width:402px;
+  height: 78px
+}
+
+.cell:nth-child(3n) {
+  background-color: #F00;
 }
