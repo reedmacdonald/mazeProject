@@ -50,22 +50,21 @@ class Maze extends Component{
         this.setState({
             clicked:!this.state.clicked
         })
-        alert(`${this.state.clicked}<---this.state.clicked`)
-        console.log("I AM CHANGING THE CLICKED STATE OF THE MAZE COMPONENT")
     }
 
     handleSubmit = async (e) => {
-        console.log(this)
         e.preventDefault();
-        const loginResponse = await fetch('/maze', {method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(this.props),
-        headers:{
-            "Content-type" : 'application/json'
-        }
-    });
-        const parsedResponse = await loginResponse.json();
-        console.log(parsedResponse)}
+        const mazeResponse = await fetch('/maze', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify(this.state),
+            headers:{
+                "Content-type" : 'application/json'
+            }
+        })
+        const parsedResponse = await mazeResponse.json();
+        console.log(parsedResponse)
+    }
     
     pushValueUp = (brick) => {
         this.state.maze.push(brick)
@@ -77,7 +76,7 @@ class Maze extends Component{
   render(){
       const arrayOne= new Array(6400).fill('hello')
       
-    const movieList = arrayOne.map((movie, i) => {
+    const theMaze = arrayOne.map((movie, i) => {
         return (
             <Square pushValueUp = {this.pushValueUp} scar={i} clicked = {this.state.clicked} key={i} name="brick" button={this.state.buttonClicked} color={this.state.colorToChangeMaze} className= 'cell'/>
           )
@@ -91,7 +90,7 @@ class Maze extends Component{
         <button type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>
       
       <div className="grid">  
-        {movieList}
+        {theMaze}
         <button type="submit" />
       </div>
       
@@ -127,12 +126,7 @@ class Square extends Component{
             changeColor:true,
             colorToChange:this.props.button})
 }
-
-
-
- 
     render(){
-
         return(
             <input onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
             </input>
