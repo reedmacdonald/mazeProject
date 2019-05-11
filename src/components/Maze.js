@@ -22,7 +22,7 @@ class Maze extends Component{
     }
 
     timeUp = (e) => {
-        alert('ok, so, it has been 3 minutes! How\'d you do? Now its time to test your maze to make sure it works!')
+        alert('ok, so, it has been 2 minutes! How\'d you do? Now its time to test your maze to make sure it works!')
         this.changeButtons();
     }
     changeToRed = (e) => {
@@ -45,9 +45,7 @@ class Maze extends Component{
         this.setState({
             buildShowing:'none',
             testShowing:'inline',
-
         })
-        this.state.testing && alert('ok we will now submit your maze')
     }
     outOfBounds = (e) => {
         alert('you are out of bounds')
@@ -57,7 +55,21 @@ class Maze extends Component{
             clicked:!this.state.clicked
         })
         alert(`${this.state.clicked}<---this.state.clicked`)
+        console.log("I AM CHANGING THE CLICKED STATE OF THE MAZE COMPONENT")
     }
+
+    handleSubmit = async (e) => {
+        console.log(this)
+        e.preventDefault();
+        const loginResponse = await fetch('/maze', {method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(this.props),
+        headers:{
+            "Content-type" : 'application/json'
+        }
+    });
+        const parsedResponse = await loginResponse.json();
+        console.log(parsedResponse)}
         
   render(){
       const arrayOne= new Array(6400).fill('hello')
@@ -71,9 +83,10 @@ class Maze extends Component{
       <div onDoubleClick={this.changeToClicked}> 
         <div onMouseOver={this.outOfBounds} className="outOfBounds"></div>
         <div onMouseOver={this.outOfBounds} className="outOfBoundsTwo"></div>
-        <button onClick={this.changeButtons} className="finishMaze" style={{'display':this.state.finishShowing}}>Finish Maze</button>
+        <form onSubmit={this.handleSubmit}>
+        <button type="button" onClick={this.changeButtons} className="finishMaze" style={{'display':this.state.finishShowing}}>Finish Maze</button>
         <button type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>
-      <form>
+      
       <div className="grid">  
         {movieList}
         <button type="submit" />
@@ -94,7 +107,7 @@ class Square extends Component{
           colorToChange:null,
           changeColor: false,
           value:null,
-          clicked:false
+          clicked:this.props.clicked
         };
       }
     
@@ -103,22 +116,17 @@ class Square extends Component{
     }
 
     switchColor =(e)=>{
-        this.doubleClicked
         (this.state.colorToChange=='black' && this.props.button== 'red')&& this.hitWall
         (this.state.colorToChange=='black' && this.props.button!= 'red') && this.setState({
             value: 1
         })
+        this.props.pushValueUp(this.state.value)
         this.setState({
             changeColor:true,
             colorToChange:this.props.button})
 }
 
-    doubleClicked = (e) => {
-        this.setState({
-            clicked: this.props.clicked
-        })
-        console.log(this.state.clicked)
-    }
+ 
     render(){
         return(
             <input  value = {this.state.value} onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
