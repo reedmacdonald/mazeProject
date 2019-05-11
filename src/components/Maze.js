@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
 import '../App.css';
-import { isNullOrUndefined } from 'util';
-
-//when they become a wall push the number into an array
-//then make a super long array of all the bricks
-//then move the new numbers
 
 class Maze extends Component{
     constructor(props){
@@ -115,7 +110,6 @@ class Square extends Component{
           color: 'white',
           colorToChange:null,
           changeColor: false,
-          value:null,
           clicked:this.props.clicked
         };
       }
@@ -123,22 +117,24 @@ class Square extends Component{
     hitWall = (e) => {
         alert('you hit a wall')
     }
-
-    switchColor =(e)=>{
-        (this.state.colorToChange=='black' && this.props.button== 'red')&& this.hitWall
-        (this.state.colorToChange=='black' && this.props.button!= 'red') && this.setState({
-            value: 1
-        })
+    fuckThis = () =>{
         this.props.pushValueUp(this.state.scar)
+    }
+    switchColor =(e)=>{
+        (this.state.colorToChange==='black' && this.props.button=== 'red')&& this.hitWall()
+        this.fuckThis()
         this.setState({
             changeColor:true,
             colorToChange:this.props.button})
 }
 
+
+
  
     render(){
+
         return(
-            <input  value = {this.state.value} onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
+            <input onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
             </input>
         )
     }
