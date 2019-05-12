@@ -83,8 +83,9 @@ class Maze extends Component{
       })
       return (
       <div onDoubleClick={this.changeToClicked}> 
-        <div onMouseOver={this.outOfBounds} className="outOfBounds"></div>
-        <div onMouseOver={this.outOfBounds} className="outOfBoundsTwo"></div>
+        <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
+        <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
+        <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsThree"></div>
         <form onSubmit={this.handleSubmit}>
         <button type="button" onClick={this.changeButtons} className="finishMaze" style={{'display':this.state.finishShowing}}>Finish Maze</button>
         <button type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>

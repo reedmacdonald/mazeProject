@@ -16,13 +16,15 @@ to know you could do it.</p>
 <p>Why?</p>
 <br/>
 <p>COBB:</p>
-<p>It's not, strictly speaking, legal.
-Ariadne raises her eyebrows.</p>
+<p>It's not, strictly speaking, legal.</p>
+<p>Ariadne raises her eyebrows.</p>
 <br/>
 <p>COBB:</p>
-<p>You have two minutes to draw a maze
-that takes me one minute to solve.</p>
-<p>Ariadne takes the pad and pen. Cobb looks at his watch.</p>
+<b>You have two minutes to draw a maze
+that takes me one minute to solve.</b>
+<br/>
+<br/>
+<p>*Ariadne takes the pad and pen. Cobb looks at his watch.*</p>
 <br/>
 <p>
 COBB</p>
