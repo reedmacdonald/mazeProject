@@ -12,7 +12,8 @@ class Maze extends Component{
             clicked: true,
             finishShowing:'inline',
             submitShowing:'none',
-            maze:[]
+            maze:[],
+            name:''
             
         }
     }
@@ -51,6 +52,14 @@ class Maze extends Component{
             clicked:!this.state.clicked
         })
     }
+    nameThisMaze = (e) => {
+        e.preventDefault()
+        var nameValue = document.getElementById("uniqueID").value
+        this.setState({
+            name: nameValue
+        })
+        alert(`name is now ${this.state.name}`)
+    }
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -72,6 +81,8 @@ class Maze extends Component{
             maze:this.state.maze
         })
     }
+
+
         
   render(){
       const arrayOne= new Array(6400).fill('hello')
@@ -92,12 +103,16 @@ class Maze extends Component{
       
       <div className="grid">  
         {theMaze}
-        <button type="submit" />
       </div>
-      
       </form>
+
       <button className="startEndButton" onClick={this.changeToRed} style={{'display':this.state.testShowing}}>Test Maze</button>
       <button className="startEndButton" onClick={this.changeToBlack} style={{'display':this.state.buildShowing}}>Build Maze</button>
+      
+      <form className="nameForm" onSubmit={this.nameThisMaze}>
+          <input id = "uniqueID" name = "mazeName" className="giveName" type="text" placeholder=" Name of Your maze"></input>
+          <button type="submit"> Give name</button>
+      </form>
       </div>
   )}
 }

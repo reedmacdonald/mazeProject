@@ -17,7 +17,8 @@ to know you could do it.</p>
 <br/>
 <p>COBB:</p>
 <p>It's not, strictly speaking, legal.</p>
-<p>Ariadne raises her eyebrows.</p>
+<br/>
+<p>*Ariadne raises her eyebrows.*</p>
 <br/>
 <p>COBB:</p>
 <b>You have two minutes to draw a maze
