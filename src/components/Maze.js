@@ -144,8 +144,8 @@ class Square extends Component{
 }
     render(){
         return(
-            <input onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
-            </input>
+            <div className="boxes" onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
+            </div>
         )
     }
 }
