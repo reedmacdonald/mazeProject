@@ -18,36 +18,36 @@ class Maze extends Component{
         }
     }
 
-    timeUp = (e) => {
+    timeUp = () => {
         alert('ok, so, it has been 2 minutes! How\'d you do? Now its time to test your maze to make sure it works!')
         this.changeButtons();
     }
-    changeToRed = (e) => {
+    changeToRed = () => {
         this.setState({
             submitShowing:'inline',
             finishShowing: 'none',
             buttonClicked:'red',
             testing: true})
         }
-    timer = (e) => {
+    timer = () => {
         setTimeout(this.timeUp,120000)
     }
-    changeToBlack = (e)=>{
+    changeToBlack = ()=>{
         this.setState({
             buttonClicked:'black'})
         this.timer()
         }
-    changeButtons = (e)=>{
+    changeButtons = ()=>{
         clearTimeout(this.timer);
         this.setState({
             buildShowing:'none',
             testShowing:'inline',
         })
     }
-    outOfBounds = (e) => {
+    outOfBounds = () => {
         alert('you are out of bounds')
     }    
-    changeToClicked = (e) => {
+    changeToClicked = () => {
         this.setState({
             clicked:!this.state.clicked
         })
@@ -129,13 +129,13 @@ class Square extends Component{
         };
       }
     
-    hitWall = (e) => {
+    hitWall = () => {
         alert('you hit a wall')
     }
     fuckThis = () =>{
         this.props.pushValueUp(this.state.scar)
     }
-    switchColor =(e)=>{
+    switchColor =()=>{
         (this.state.colorToChange==='black' && this.props.button=== 'red')&& this.hitWall()
         this.fuckThis()
         this.setState({
