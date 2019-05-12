@@ -66,7 +66,7 @@ class Maze extends Component{
         const mazeResponse = await fetch('/maze', {
             method: 'POST',
             credentials: 'include',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify(this.state, this.maze),
             headers:{
                 "Content-type" : 'application/json'
             }
