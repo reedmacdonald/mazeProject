@@ -132,12 +132,12 @@ class Square extends Component{
     hitWall = () => {
         alert('you hit a wall')
     }
-    fuckThis = () =>{
-        this.props.pushValueUp(this.state.scar)
+    darnThis = () =>{
+        this.props.pushValueUp(this.props.scar)
     }
     switchColor =()=>{
         (this.state.colorToChange==='black' && this.props.button=== 'red')&& this.hitWall()
-        this.fuckThis()
+        this.darnThis()
         this.setState({
             changeColor:true,
             colorToChange:this.props.button})
