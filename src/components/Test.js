@@ -64,9 +64,19 @@ class Test extends Component{
         })
     }
 
-    submitMaze = (e) => {
+    submitMaze = async (e) => {
         e.preventDefault();
         alert('You have submitted the maze')
+        const winner = await fetch(`/maze/test/${this.props.match.params.testId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers:{
+                "Content-type" : 'application/json'
+            }
+        })
+        const parsedResponse = await winner.json();
+        console.log(parsedResponse)
+
     }
 
     didntStart = (e) => {
