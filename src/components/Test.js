@@ -60,6 +60,11 @@ class Test extends Component{
         e.preventDefault();
         alert('You have submitted the maze')
     }
+
+    didntStart = (e) => {
+        e.preventDefault();
+        alert('You clicked submit but you didnt start so it doesnt count')
+    }
     
   render(){
 
@@ -69,8 +74,8 @@ class Test extends Component{
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsThree"></div>
-        <form onSubmit={this.handleSubmit}>
-        <button onClick = {this.submitMaze} type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>
+        <form onSubmit={this.state.testing?this.handleSubmit:undefined}>
+        <button onClick = {this.state.testing?this.submitMaze:this.didntStart} type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>
         <div className="grid">
         {this.state.maze}
         </div>
