@@ -18,7 +18,7 @@ class TopMazes extends Component{
         console.log(allMazes)
         this.setState({
             bestMazes:allMazes.map((element)=>
-            <li>{element.name}</li>)
+            <li>Name: {element.name} id: {element._id} successes: {element.successes} attempts: {element.attempts}</li>)
         })
         return allMazes
     }

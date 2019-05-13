@@ -66,10 +66,15 @@ class Maze extends Component{
 
     handleSubmit = async (e) => {
         e.preventDefault();
+        alert('You are submitting')
+        const thingToSend={
+            name:this.state.name,
+            maze:this.maze
+        }
         const mazeResponse = await fetch('/maze', {
             method: 'POST',
             credentials: 'include',
-            body: JSON.stringify(this.state, this.maze),
+            body: JSON.stringify(thingToSend),
             headers:{
                 "Content-type" : 'application/json'
             }
@@ -98,7 +103,7 @@ class Maze extends Component{
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsThree"></div>
         <form onSubmit={this.handleSubmit}>
         <button type="button" onClick={this.changeButtons} className="finishMaze" style={{'display':this.state.finishShowing}}>Finish Maze</button>
-        <button type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>
+        <button onClick={this.handleSubmit} type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>
       
       <div className="grid">  
         {theMaze}
