@@ -6,6 +6,7 @@ import Login from './components/Login'
 import ShowUser from './components/ShowUser'
 import WelcomePage from './components/welcomePage'
 import TopMazes from './components/bestOf'
+import Test from './components/Test'
 
 
 import * as routes from './constants/routes'
@@ -36,7 +37,9 @@ class App extends Component {
           <Route exact path={routes.WELCOME} render={() => <WelcomePage/>} />
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
+          <Route exact path={routes.TEST} render={() => <Test/>} />
           <Route render={() => <div>NOT FOUND</div>} />
+          <Route exact path={routes.TEST} render={() => <Test/>} />
         </Switch>
       </div>
     );

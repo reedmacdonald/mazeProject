@@ -11,6 +11,7 @@ const NavBar = ({currentUser}) =>
 
     <NavLink to={routes.MAZES} activeClassName="selected">MAZES </NavLink>
     <NavLink to={routes.WELCOME} activeClassName="selected">WELCOME </NavLink>
+    <NavLink to={routes.TEST} activeClassName="selected">TEST </NavLink>
     {
       currentUser
         ? <span>hello {currentUser.username}</span>
