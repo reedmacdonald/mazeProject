@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import '../App.css';
-let testMaze
+let testMaze;
+let testName
 
 class Test extends Component{
     constructor(props){
         super(); 
         this.state = {
-            testing:false
+            testing:false,
         }
         this.maze=[]
     }
@@ -16,9 +17,12 @@ class Test extends Component{
     getMaze = async (e) => {
         const mazeResponse = await fetch('/maze/test')
         const parsedResponse = await mazeResponse.json();
+        console.log(parsedResponse.data,'<----parsedResponse.data')
         testMaze = parsedResponse.data.maze;
+        testName = parsedResponse.data.name
         console.log(testMaze)
         this.setState({
+            name:testName,
             maze:
             testMaze.map((element)=>{
             return <div><Square testing={this.state.testing} className="cell" color={element=="1"?'black':'white'} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
@@ -73,6 +77,7 @@ class Test extends Component{
         </form>
 
         <button type="submit" onClick={this.attemptMaze} className="startEndButton">Attempt Maze</button>
+        <h1 className="displayName">{this.state.name}</h1>
         </div>
         
   )}
