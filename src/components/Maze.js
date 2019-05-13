@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import '../App.css';
 
+const arrayOne = new Array(6400).fill(0);
+
 class Maze extends Component{
     constructor(props){
         super(); 
@@ -12,10 +14,11 @@ class Maze extends Component{
             clicked: true,
             finishShowing:'inline',
             submitShowing:'none',
-            maze:[],
+            
             name:''
             
         }
+        this.maze=[]
     }
 
     timeUp = () => {
@@ -76,16 +79,12 @@ class Maze extends Component{
     }
     
     pushValueUp = (brick) => {
-        this.state.maze.push(brick)
-        this.setState({
-            maze:this.state.maze
-        })
+        this.maze.push(brick)
     }
 
 
         
   render(){
-      const arrayOne= new Array(6400).fill('hello')
       
     const theMaze = arrayOne.map((movie, i) => {
         return (
