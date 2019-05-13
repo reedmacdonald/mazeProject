@@ -30,8 +30,12 @@
 }
 
 .holderDiv {
-  position: fixed;
-  box-shadow: 10px 10px gray
+  position: sticky;
+  box-shadow: 10px 10px gray;
+  height:580px;
+  width:460px;
+  margin: 30px 30px;
+  border:10px solid black;
 }
 
 .timer {
@@ -157,10 +161,17 @@ button {
 }
 
 .startEndButton{
+  color: red;
   position: absolute;
   margin-top: 450px;
   width:402px;
   height: 78px
+}
+
+.greatBackground {
+  width:1600px;
+  height:900px;
+  background-image: linear-gradient(to bottom right, gray, white);
 }
 
 .cell:nth-child(3n) {

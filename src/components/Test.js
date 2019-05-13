@@ -89,8 +89,7 @@ class Test extends Component{
   render(){
 
       return (
-          <div>
-        <div className="holderDiv">Test</div>
+          <div className="holderDiv">
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsThree"></div>
@@ -101,7 +100,7 @@ class Test extends Component{
         </div>
         </form>
 
-        <button type="submit" onClick={this.attemptMaze} className="startEndButton">Attempt Maze</button>
+        <button type="submit" onClick={this.attemptMaze} className="startEndButton" style = {{'fontSize':'30px'}}>Attempt Maze</button>
         <h1 className="displayName">{this.state.name}</h1>
         <TimerTwo />
         </div>

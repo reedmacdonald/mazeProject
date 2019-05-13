@@ -34,7 +34,7 @@ class TimerOne extends Component {
 
   // update time prop by one
   tick = () => {
-      this.state.time==120
+      this.state.time==180
       ?this.stopTimer()
       :this.setState(prevState => ({ time: prevState.time + 1 }))
   };

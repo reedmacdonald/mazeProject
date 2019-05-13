@@ -29,7 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="greatBackground">
         <NavBar currentUser={this.state.currentUser}/>
         <Switch>
           <Route exact path={routes.BEST} render={() => <TopMazes/>} />
