@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import * as routes from '../constants/routes';
 let allMazes
 
 class TopMazes extends Component{
@@ -18,7 +20,7 @@ class TopMazes extends Component{
         console.log(allMazes)
         this.setState({
             bestMazes:allMazes.map((element)=>
-            <li>Name: {element.name} id: {element._id} successes: {element.successes} attempts: {element.attempts}</li>)
+            <li>Name: <NavLink to={routes.TEST}> {element.name} </NavLink> id: {element._id} successes: {element.successes} attempts: {element.attempts}</li>)
         })
         return allMazes
     }
