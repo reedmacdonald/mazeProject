@@ -20,7 +20,9 @@ class TopMazes extends Component{
         console.log(allMazes)
         this.setState({
             bestMazes:allMazes.map((element)=>
-            <li>Name: <NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li>)
+    
+            <div><li>Name: <NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><br/></div>)
+
         })
         return allMazes
     }
@@ -33,8 +35,9 @@ class TopMazes extends Component{
         return(
             <div>
             <h1>Top Mazes</h1>
+            <br/>
             <ol>
-                <li>{this.state.bestMazes}</li>
+                {this.state.bestMazes}
             </ol>
             </div>
         )

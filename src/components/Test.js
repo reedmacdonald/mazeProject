@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom'
 import '../App.css';
 import Maze from './Maze';
+import TimerTwo from './TimerTwo'
 let testMaze;
 let testName
+
 
 class Test extends Component{
     constructor(props){
@@ -54,18 +56,9 @@ class Test extends Component{
 
     componentDidMount(){
         this.getMaze()
-        this.startTimer()
         console.log(this.props.match.params.testId)
     }
 
-    theyFailed = () => {
-        alert('You have failed');
-        //Make a put route saying that they have failed
-    }
-
-    startTimer = () => {
-        setTimeout(this.theyFailed,120000)
-    }
 
     attemptMaze = () => {
         this.setState({
@@ -97,7 +90,7 @@ class Test extends Component{
 
       return (
           <div>
-        <div>Test</div>
+        <div className="holderDiv">Test</div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsThree"></div>
@@ -110,6 +103,7 @@ class Test extends Component{
 
         <button type="submit" onClick={this.attemptMaze} className="startEndButton">Attempt Maze</button>
         <h1 className="displayName">{this.state.name}</h1>
+        <TimerTwo />
         </div>
         
   )}

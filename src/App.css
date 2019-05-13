@@ -29,6 +29,23 @@
   color: #61dafb;
 }
 
+.holderDiv {
+  position: fixed;
+  box-shadow: 10px 10px gray
+}
+
+.timer {
+  position: absolute;
+  margin-top:550px;
+  margin-left:200px
+}
+
+.timer_label {
+  position: absolute;
+  margin-top:550px;
+  margin-left:200px;
+}
+
 .displayName {
   position: absolute;
   margin-top: 600px

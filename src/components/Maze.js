@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TimerOne from './TimerOne'
 import '../App.css';
 
 
@@ -33,14 +34,12 @@ class Maze extends Component{
             buttonClicked:'red',
             testing: true})
         }
-    timer = () => {
-        setTimeout(this.timeUp,120000)
-    }
+
     changeToBlack = ()=>{
         this.setState({
             buttonClicked:'black'})
-        this.timer()
         }
+
     changeButtons = ()=>{
         clearTimeout(this.timer);
         this.setState({
@@ -98,7 +97,7 @@ class Maze extends Component{
           )
       })
       return (
-      <div onDoubleClick={this.changeToClicked}> 
+      <div className="holderDiv" onDoubleClick={this.changeToClicked}> 
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsThree"></div>
@@ -118,6 +117,7 @@ class Maze extends Component{
           <input id = "uniqueID" name = "mazeName" className="giveName" type="text" placeholder=" Name of Your maze"></input>
           <button type="submit"> Give name</button>
       </form>
+      <TimerOne test={this.state.testing}/>
       </div>
   )}
 }

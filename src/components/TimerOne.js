@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-class Timer extends Component {
+class TimerOne extends Component {
   constructor(props) {
     super(props);
 
@@ -9,7 +9,7 @@ class Timer extends Component {
     this.timerInterval = null;
     this.state = {
       isPaused: false,
-      time: props.startTime || 1
+      time: props.startTime || 1,
     };
   }
   /*
@@ -27,9 +27,16 @@ class Timer extends Component {
     this.timerInterval = setInterval(this.tick, 1000);
   };
 
+  stopTimer = () => {
+      alert('Timesup, bucko')
+      clearInterval(this.timerInterval);
+  }
+
   // update time prop by one
   tick = () => {
-    this.setState(prevState => ({ time: prevState.time + 1 }));
+      this.state.time==120
+      ?this.stopTimer()
+      :this.setState(prevState => ({ time: prevState.time + 1 }))
   };
 
   handleTimerToggle1(newPausedStatus) {
@@ -80,4 +87,4 @@ class Timer extends Component {
   }
 }
 
-export default Timer;
+export default TimerOne;
