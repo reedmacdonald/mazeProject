@@ -20,7 +20,7 @@ class TopMazes extends Component{
         console.log(allMazes)
         this.setState({
             bestMazes:allMazes.map((element)=>
-            <li>Name: <NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> id: {element._id} successes: {element.successes} attempts: {element.attempts}</li>)
+            <li>Name: <NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li>)
         })
         return allMazes
     }

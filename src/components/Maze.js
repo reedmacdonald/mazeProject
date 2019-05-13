@@ -85,7 +85,7 @@ class Maze extends Component{
     }
     
     pushValueUp = (brick) => {
-        this.state.testing && this.maze.push(brick)
+        !this.state.testing && this.maze.push(brick)
     }
 
 
