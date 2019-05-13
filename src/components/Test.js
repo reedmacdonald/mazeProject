@@ -39,8 +39,17 @@ class Test extends Component{
 
     }
 
-    outOfBounds = () =>{
+    outOfBounds = async () =>{
         alert('You are out of bounds!')
+        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers:{
+                "Content-type" : 'application/json'
+            }
+        })
+        const parsedResponse = await loser.json();
+        console.log(parsedResponse)
     }
 
     componentDidMount(){
