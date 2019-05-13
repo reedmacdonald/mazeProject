@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 
+
 const arrayOne = new Array(6400).fill(0);
 
 class Maze extends Component{
@@ -84,7 +85,7 @@ class Maze extends Component{
     }
     
     pushValueUp = (brick) => {
-        this.maze.push(brick)
+        this.state.testing && this.maze.push(brick)
     }
 
 

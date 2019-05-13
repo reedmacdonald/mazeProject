@@ -34,7 +34,7 @@ COBB</p>
 <br/>
 <br/>
     <button type="submit"><NavLink to={routes.MAZES} activeClassName="selected"> Make Mazes </NavLink></button>
-    <button type="submit">Test Mazes</button>
+    <button type="submit"><NavLink to={routes.BEST} activeClassName="selected"> Test Mazes </NavLink></button>
 </div>
 
 export default WelcomePage

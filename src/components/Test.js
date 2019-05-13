@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom'
 import '../App.css';
+import Maze from './Maze';
 let testMaze;
 let testName
 
@@ -16,6 +18,11 @@ class Test extends Component{
 
     getMaze = async (e) => {
         const mazeResponse = await fetch('/maze/test')
+        // const mazeResponse = await fetch('/maze/test/${this.props.match.params.testId}')
+        // exress backend call 
+        // app.get('/maze/test/:id', (req, res) => {
+        //     Maze.findById(res.params,id)
+        // })
         const parsedResponse = await mazeResponse.json();
         console.log(parsedResponse.data,'<----parsedResponse.data')
         testMaze = parsedResponse.data.maze;
@@ -39,6 +46,7 @@ class Test extends Component{
     componentDidMount(){
         this.getMaze()
         this.startTimer()
+        console.log(this.props.match.params.testId)
     }
 
     theyFailed = () => {
@@ -121,4 +129,4 @@ class Square extends Component{
 
 
 
-export default Test;
+export default withRouter(Test);

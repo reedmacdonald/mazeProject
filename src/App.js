@@ -37,7 +37,7 @@ class App extends Component {
           <Route exact path={routes.WELCOME} render={() => <WelcomePage/>} />
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
-          <Route exact path={routes.TEST} render={() => <Test/>} />
+          <Route exact path={`${routes.TEST}/:testId`} render={() => <Test/>} />
           <Route render={() => <div>NOT FOUND</div>} />
           <Route exact path={routes.TEST} render={() => <Test/>} />
         </Switch>
