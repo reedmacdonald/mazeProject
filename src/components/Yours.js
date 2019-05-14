@@ -48,7 +48,6 @@ class Yours extends Component{
             }
             )
             const parsedResponse = await loser.json();
-            console.log(parsedResponse,'<----parsed Response')
             this.getBestOf()
         }}>Delete</button><br/></div>)
 
