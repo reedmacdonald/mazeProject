@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import TimerOne from './TimerOne'
+import { withRouter, Redirect } from 'react-router-dom'
 import '../App.css';
+import * as routes from '../constants/routes'
 
 
 const arrayOne = new Array(6400).fill(0);
@@ -16,9 +18,7 @@ class Maze extends Component{
             clicked: true,
             finishShowing:'inline',
             submitShowing:'none',
-            
             name:''
-            
         }
         this.maze=[]
     }

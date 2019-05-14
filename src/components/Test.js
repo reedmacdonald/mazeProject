@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import '../App.css';
 import Maze from './Maze';
 import TimerTwo from './TimerTwo'
+import * as routes from '../constants/routes'
+
+
 let testMaze;
 let testName
+
 
 
 class Test extends Component{
@@ -12,6 +16,11 @@ class Test extends Component{
         super(); 
         this.state = {
             testing:false,
+            hitWall:false,
+            outTime:false,
+            outBounds:false,
+            youWon:false
+
         }
         this.maze=[]
     }
@@ -65,6 +74,9 @@ class Test extends Component{
         })
         const parsedResponse = await loser.json();
         console.log(parsedResponse)
+        this.setState({
+            outBounds:true
+        })
     }
 
     componentDidMount(){
@@ -90,6 +102,9 @@ class Test extends Component{
         })
         const parsedResponse = await loser.json();
         console.log(parsedResponse)
+        this.setState({
+            hitWall:true
+        })
     }
 
     submitMaze = async (e) => {
@@ -104,6 +119,9 @@ class Test extends Component{
         })
         const parsedResponse = await winner.json();
         console.log(parsedResponse)
+        this.setState({
+            youWon:true
+        })
 
     }
 
@@ -112,7 +130,21 @@ class Test extends Component{
         alert('You clicked submit but you didnt start so it doesnt count')
     }
     
+
   render(){
+    if (this.state.hitWall) {
+        return <Redirect to={routes.HITWALL}/>;
+      }
+      if (this.state.youWon) {
+        return <Redirect to={routes.YOUWON}/>;
+      }
+      
+      if (this.state.outBounds) {
+        return <Redirect to={routes.OUTBOUNDS}/>;
+      }
+      if (this.state.outTime) {
+        return <Redirect to={routes.OUTTIME}/>;
+      }
 
       return (
           <div className="holderDiv">

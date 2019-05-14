@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 import NavBar from './components/NavBar'
 import Login from './components/Login'
@@ -7,6 +7,10 @@ import ShowUser from './components/ShowUser'
 import WelcomePage from './components/welcomePage'
 import TopMazes from './components/bestOf'
 import Test from './components/Test'
+import YouWon from './components/YouWon'
+import OutBounds from './components/OutBounds'
+import OutTime from './components/OutTime'
+import HitWall from './components/HitWall'
 
 
 import * as routes from './constants/routes'
@@ -38,8 +42,13 @@ class App extends Component {
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
           <Route exact path={`${routes.TEST}/:testId`} render={() => <Test/>} />
-          <Route render={() => <div>NOT FOUND</div>} />
+          
           <Route exact path={routes.TEST} render={() => <Test/>} />
+          <Route exact path={routes.YOUWON} render={() => <YouWon/>} />
+          <Route exact path={routes.OUTBOUNDS} render={() => <OutBounds/>} />
+          <Route exact path={routes.OUTTIME} render={() => <OutTime/>} />
+          <Route exact path={routes.HITWALL} render={() => <HitWall/>} />
+          <Route render={() => <div>NOT FOUND</div>} />
         </Switch>
       </div>
     );
