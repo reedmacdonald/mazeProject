@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import * as routes from '../constants/routes';
 let allMazes
 
-class TopMazes extends Component{
+class AllMazes extends Component{
     constructor(props){
         super(); 
         this.state = {
@@ -18,24 +18,26 @@ class TopMazes extends Component{
         const parsedResponse = await bestofResponse.json();
         allMazes = parsedResponse.data
         function compare( a, b ) {
-            if ( a.attempts > b.attempts ){
+            if ( a.name < b.name ){
               return -1;
             }
-            if ( a.attempts < b.attempts ){
+            if ( a.name > b.name ){
               return 1;
             }
             return 0;
           }
           allMazes.sort(compare)
           let finalMaze=[]
-          for(let i=0;i<5;i++){
+          for(let i=0;i<allMazes.length;i++){
+              if(allMazes[i].name != ""){
             finalMaze[i]=allMazes[i]
+        }
           }
         console.log(finalMaze)
         this.setState({
             bestMazes:finalMaze.map((element)=>
     
-            <div><li>Name: <NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><br/></div>)
+            <div><li><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><br/></div>)
 
         })
         return finalMaze
@@ -48,7 +50,7 @@ class TopMazes extends Component{
 
         return(
             <div>
-            <h1>Top Mazes</h1>
+            <h1>All Mazes</h1>
             <br/>
             <ol>
                 {this.state.bestMazes}
@@ -58,4 +60,4 @@ class TopMazes extends Component{
     }
 }
 
-export default TopMazes
+export default AllMazes

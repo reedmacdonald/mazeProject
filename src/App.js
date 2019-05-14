@@ -11,6 +11,7 @@ import YouWon from './components/YouWon'
 import OutBounds from './components/OutBounds'
 import OutTime from './components/OutTime'
 import HitWall from './components/HitWall'
+import AllMazes from './components/AllMazes'
 
 
 import * as routes from './constants/routes'
@@ -64,6 +65,7 @@ class App extends Component {
           <Route exact path={routes.OUTBOUNDS} render={() => <OutBounds/>} />
           <Route exact path={routes.OUTTIME} render={() => <OutTime/>} />
           <Route exact path={routes.HITWALL} render={() => <HitWall/>} />
+          <Route exact path={routes.ALL} render={() => <AllMazes/>} />
           <Route render={() => <div>NOT FOUND</div>} />
         </Switch>
       </div>
