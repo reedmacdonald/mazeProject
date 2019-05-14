@@ -43,7 +43,7 @@ class Test extends Component{
             name:testName,
             maze:
             testMaze.map((element)=>{
-            return <div><Square hit ={this.hit} testing={this.state.testing} className="cell" color={element=="1"?'black':'white'} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
+            return <div><Square hit ={this.hit} testing={this.state.testing} className="cell" color={element=="1"?'black':null} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
         }
         )
     })

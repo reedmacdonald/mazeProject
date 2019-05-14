@@ -8,13 +8,26 @@ import { NavLink } from 'react-router-dom';
 
 const OutBounds = () =>  
 <div class="divHolderTwo">
+
 <h1>Well, it looks like you are out of bounds</h1>
+<br/>
+
+<h4>Looks like you'll have to try again another time</h4>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <p>Cobb: Now, before you bother telling me it's impossible...</p>
 <br/>
 <br/>
 
 
 <p>Eames: No, it's perfectly possible. <b>It's just bloody difficult.</b></p>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
