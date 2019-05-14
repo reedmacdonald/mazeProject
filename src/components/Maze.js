@@ -23,9 +23,17 @@ class Maze extends Component{
             outTime:false,
             outBounds:false,
             youWon:false,
-            username:null
+            userName:null
         }
         this.maze=[]
+    }
+
+    componentDidMount(){
+        
+        console.log(this.props.userName)
+        this.setState({
+            userName:this.props.userName
+        })
     }
 
     timeUp = () => {
@@ -78,7 +86,8 @@ class Maze extends Component{
         e.preventDefault();
         const thingToSend={
             name:this.state.name,
-            maze:this.maze
+            maze:this.maze,
+            userName:this.state.userName
         }
         const mazeResponse = await fetch('/maze', {
             method: 'POST',
@@ -122,6 +131,8 @@ class Maze extends Component{
       if (this.state.outTime) {
         return <Redirect to={routes.OUTTIME}/>;
       }
+
+  
       
     const theMaze = arrayOne.map((movie, i) => {
         return (

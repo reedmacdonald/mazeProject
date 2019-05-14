@@ -57,7 +57,6 @@ COBB</p>
 <b>Go.</b>
 <br/>
 <br/>
-<br/>
     <form className="nameFormTwo" onSubmit={this.pushLoginUp}>
           <input id = "uniqueIDTwo" name = "mazeName" className="giveName" type="text" placeholder=" Name " style={{'display':this.props.loginDisplay}}></input>
           <button type="submit" style={{'display':this.props.loginDisplay}}> Login</button>
