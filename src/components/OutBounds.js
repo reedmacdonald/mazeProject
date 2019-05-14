@@ -9,6 +9,8 @@ import { NavLink } from 'react-router-dom';
 const OutBounds = () =>  
 <div class="divHolderTwo">
 <p>Well, it looks like you are out of bounds</p>
+<button className="welcomeButtons" type="submit"><NavLink to={routes.MAZES} > Make Mazes </NavLink></button>
+    <button className="welcomeButtons" type="submit"><NavLink to={routes.BEST} > Test Mazes </NavLink></button>
 
     
 </div>

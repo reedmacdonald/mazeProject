@@ -19,13 +19,29 @@ import Maze from './components/Maze';
 
 class App extends Component {
   state = {
-    currentUser: null
+    currentUser: null,
+    loginDisplay: 'inline',
+    buttonDisplay: 'none',
   }
 
-  doSetCurrentUser = user =>
+  login = (userName) => {
+    
     this.setState({
-      currentUser: user
+      currentUser:userName,
+      loginDisplay:'none',
+      buttonDisplay: 'inline'
     })
+  }
+
+  signUp = (userName) => {
+    //Create user and whatnot
+    
+    this.setState({
+      currentUser:userName,
+      loginDisplay:'none',
+      buttonDisplay: 'inline'
+    })
+  }
 
   componentDidMount() {
 
@@ -37,11 +53,11 @@ class App extends Component {
         <NavBar currentUser={this.state.currentUser}/>
         <Switch>
           <Route exact path={routes.BEST} render={() => <TopMazes/>} />
-          <Route exact path={routes.MAZES} render={() => <Maze/>} />
-          <Route exact path={routes.WELCOME} render={() => <WelcomePage/>} />
+          <Route exact path={routes.MAZES} render={() => <Maze userName={this.state.currentUser}/>} />
+          <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
-          <Route exact path={`${routes.TEST}/:testId`} render={() => <Test/>} />
+          <Route exact path={`${routes.TEST}/:testId`} render={() => <Test userName={this.state.currentUser}/>} />
           
           <Route exact path={routes.TEST} render={() => <Test/>} />
           <Route exact path={routes.YOUWON} render={() => <YouWon/>} />

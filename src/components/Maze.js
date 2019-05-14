@@ -18,14 +18,22 @@ class Maze extends Component{
             clicked: true,
             finishShowing:'inline',
             submitShowing:'none',
-            name:''
+            name:'',
+            hitWall:false,
+            outTime:false,
+            outBounds:false,
+            youWon:false,
+            username:null
         }
         this.maze=[]
     }
 
     timeUp = () => {
-        alert('ok, so, it has been 2 minutes! How\'d you do? Now its time to test your maze to make sure it works!')
+        alert('ok, so, it has been 3 minutes! How\'d you do? Now its time to test your maze to make sure it works!')
         this.changeButtons();
+        this.setState({
+            outTime:true
+        })
     }
     changeToRed = () => {
         this.setState({
@@ -48,7 +56,9 @@ class Maze extends Component{
         })
     }
     outOfBounds = () => {
-        alert('you are out of bounds')
+        this.setState({
+            outBounds:true
+        })
     }    
     changeToClicked = () => {
         this.setState({
@@ -66,7 +76,6 @@ class Maze extends Component{
 
     handleSubmit = async (e) => {
         e.preventDefault();
-        alert('You are submitting')
         const thingToSend={
             name:this.state.name,
             maze:this.maze
@@ -81,6 +90,15 @@ class Maze extends Component{
         })
         const parsedResponse = await mazeResponse.json();
         console.log(parsedResponse)
+        this.setState({
+            youWon:true
+        })
+    }
+
+    hit = async () => {
+        this.setState({
+            hitWall:true
+        })
     }
     
     pushValueUp = (brick) => {
@@ -90,10 +108,24 @@ class Maze extends Component{
 
         
   render(){
+
+    if (this.state.hitWall) {
+        return <Redirect to={routes.HITWALL}/>;
+      }
+      if (this.state.youWon) {
+        return <Redirect to={routes.YOUWON}/>;
+      }
+      
+      if (this.state.outBounds) {
+        return <Redirect to={routes.OUTBOUNDS}/>;
+      }
+      if (this.state.outTime) {
+        return <Redirect to={routes.OUTTIME}/>;
+      }
       
     const theMaze = arrayOne.map((movie, i) => {
         return (
-            <Square pushValueUp = {this.pushValueUp} scar={i} clicked = {this.state.clicked} key={i} name="brick" button={this.state.buttonClicked} color={this.state.colorToChangeMaze} className= 'cell'/>
+            <Square hit = {this.hit} pushValueUp = {this.pushValueUp} scar={i} clicked = {this.state.clicked} key={i} name="brick" button={this.state.buttonClicked} color={this.state.colorToChangeMaze} className= 'cell'/>
           )
       })
       return (
@@ -133,10 +165,12 @@ class Square extends Component{
           clicked:this.props.clicked
         };
       }
-    
-    hitWall = () => {
-        alert('you hit a wall')
+
+    hitWall = async () => {
+    this.props.hit()
     }
+    
+
     darnThis = () =>{
         this.props.pushValueUp(this.props.scar)
     }

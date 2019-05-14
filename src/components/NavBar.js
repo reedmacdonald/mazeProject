@@ -12,7 +12,7 @@ const NavBar = ({currentUser}) =>
     <NavLink to={routes.WELCOME} activeClassName="selected">WELCOME </NavLink>
     {
       currentUser
-        ? <span>hello {currentUser.username}</span>
+        ? <span>hello {currentUser}</span>
         :  <NavLink to={'/login'} activeClassName="selected">LOGIN </NavLink>
     }
   </div>

@@ -1,12 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import * as routes from '../constants/routes';
+import React, {Component} from 'react';
+import { withRouter, Redirect } from 'react-router-dom'
+import '../App.css';
+import Maze from './Maze';
+import TimerTwo from './TimerTwo'
+import * as routes from '../constants/routes'
 import { NavLink } from 'react-router-dom';
 
 
 
 
-const WelcomePage = () =>  
+class WelcomePage extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            scar: this.props.scar,
+          color: 'white',
+          colorToChange:null,
+          changeColor: false,
+          clicked:this.props.clicked
+        };
+      }
+      pushLoginUp = (e) => {
+          e.preventDefault()
+        var loginValue = document.getElementById("uniqueIDTwo").value
+            this.props.login(loginValue)
+      }
+      pushSignUpUp = (e) => {
+          e.preventDefault()
+        var signUpValue = document.getElementById("uniqueIDThree").value
+          this.props.signUp(signUpValue)
+      }
+      render(){
+          return(
 <div class="divHolderTwo">
 <p>COBB:</p>
 <p>Before I describe the job, I have
@@ -33,8 +58,18 @@ COBB</p>
 <br/>
 <br/>
 <br/>
-    <button className="welcomeButtons" type="submit"><NavLink to={routes.MAZES} > Make Mazes </NavLink></button>
-    <button className="welcomeButtons" type="submit"><NavLink to={routes.BEST} > Test Mazes </NavLink></button>
+    <form className="nameFormTwo" onSubmit={this.pushLoginUp}>
+          <input id = "uniqueIDTwo" name = "mazeName" className="giveName" type="text" placeholder=" Name " style={{'display':this.props.loginDisplay}}></input>
+          <button type="submit" style={{'display':this.props.loginDisplay}}> Login</button>
+      </form>
+      <form className="nameFormThree" onSubmit={this.pushSignUpUp}>
+          <input id = "uniqueIDThree" name = "mazeName" className="giveName" type="text" placeholder=" Name " style={{'display':this.props.loginDisplay}}></input>
+          <button type="submit" style={{'display':this.props.loginDisplay}}> Sign-Up</button>
+      </form>
+    <button className="welcomeButtons" type="submit" style={{'display':this.props.buttonDisplay}}><NavLink to={routes.MAZES} > Make Mazes </NavLink></button>
+    <button className="welcomeButtons" type="submit" style={{'display':this.props.buttonDisplay}}><NavLink to={routes.BEST} > Test Mazes </NavLink></button>
 </div>
-
+          )
+      }
+    }
 export default WelcomePage
