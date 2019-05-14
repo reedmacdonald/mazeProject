@@ -37,7 +37,20 @@ class Yours extends Component{
         this.setState({
             bestMazes:finalMaze.map((element)=>
     
-            <div><li><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><button onClick={undefined}>Delete</button><br/></div>)
+            <div><li><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><button onClick={        
+                async ()=>{
+                const loser = await fetch(`/maze/delete/${element._id}`, {
+                method: 'DELETE',
+                credentials: 'include',
+                headers:{
+                    "Content-type" : 'application/json'
+                }
+            }
+            )
+            const parsedResponse = await loser.json();
+            console.log(parsedResponse,'<----parsed Response')
+            this.getBestOf()
+        }}>Delete</button><br/></div>)
 
         })
         return finalMaze
