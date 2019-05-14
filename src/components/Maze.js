@@ -69,17 +69,27 @@ class Maze extends Component{
         })
     }    
     changeToClicked = () => {
-        this.setState({
-            clicked:!this.state.clicked
-        })
-    }
+
+        if(this.state.buttonClicked=='black'){
+            this.setState({
+                buttonClicked:''
+            })}
+        else if(this.state.buttonClicked=='' && !this.state.testing){
+            this.setState({
+                buttonClicked:'black'
+            })
+        }
+        }
+    
     nameThisMaze = (e) => {
         e.preventDefault()
         var nameValue = document.getElementById("uniqueID").value
         this.setState({
             name: nameValue
+        }, () => {
+            alert(`name is now ${this.state.name}`)
         })
-        alert(`name is now ${this.state.name}`)
+        
     }
 
     handleSubmit = async (e) => {
@@ -169,13 +179,14 @@ class Square extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            scar: this.props.scar,
-          color: 'white',
+          scar: this.props.scar,
+          color: null,
           colorToChange:null,
           changeColor: false,
-          clicked:this.props.clicked
+          clicked:this.props.clicked,
         };
       }
+    
 
     hitWall = async () => {
     this.props.hit()
@@ -185,16 +196,19 @@ class Square extends Component{
     darnThis = () =>{
         this.props.pushValueUp(this.props.scar)
     }
+
     switchColor =()=>{
         (this.state.colorToChange==='black' && this.props.button=== 'red')&& this.hitWall()
         this.darnThis()
         this.setState({
             changeColor:true,
             colorToChange:this.props.button})
-}
+    }
+
+
     render(){
         return(
-            <div className="boxes" onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
+            <div className="boxes" onMouseOver={this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
             </div>
         )
     }
