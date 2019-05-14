@@ -13,6 +13,8 @@ import OutTime from './components/OutTime'
 import HitWall from './components/HitWall'
 import AllMazes from './components/AllMazes'
 import Yours from './components/Yours'
+import Instructions from './components/Instructions'
+import Submit from './components/Submit'
 
 
 import * as routes from './constants/routes'
@@ -36,7 +38,7 @@ class App extends Component {
   }
 
   signUp = (userName) => {
-    //Create user and whatnot
+    //Create user
     
     this.setState({
       currentUser:userName,
@@ -60,13 +62,13 @@ class App extends Component {
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
           <Route exact path={routes.LOGIN} render={() => <Login currentUser={this.state.currentUser} doSetCurrentUser={this.doSetCurrentUser}/>} />
           <Route exact path={`${routes.TEST}/:testId`} render={() => <Test userName={this.state.currentUser}/>} />
-          
-          <Route exact path={routes.TEST} render={() => <Test/>} />
           <Route exact path={routes.YOUWON} render={() => <YouWon/>} />
           <Route exact path={routes.OUTBOUNDS} render={() => <OutBounds/>} />
           <Route exact path={routes.OUTTIME} render={() => <OutTime/>} />
           <Route exact path={routes.HITWALL} render={() => <HitWall/>} />
           <Route exact path={routes.ALL} render={() => <AllMazes/>} />
+          <Route exact path={routes.SUBMIT} render={() => <Submit/>} />
+          <Route exact path={routes.INSTRUCTIONS} render={() => <Instructions/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
           <Route render={() => <div>NOT FOUND</div>} />
         </Switch>

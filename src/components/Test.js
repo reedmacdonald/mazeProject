@@ -64,7 +64,6 @@ class Test extends Component{
     }
 
     outOfBounds = async () =>{
-        alert('You are out of bounds!')
         const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
@@ -81,7 +80,6 @@ class Test extends Component{
 
     componentDidMount(){
         this.getMaze()
-        console.log(this.props.match.params.testId)
     }
 
 
@@ -92,7 +90,7 @@ class Test extends Component{
     }
 
     hit = async () => {
-        alert('you hit a wall')
+        
         const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
@@ -101,7 +99,6 @@ class Test extends Component{
             }
         })
         const parsedResponse = await loser.json();
-        console.log(parsedResponse)
         this.setState({
             hitWall:true
         })
@@ -109,7 +106,6 @@ class Test extends Component{
 
     submitMaze = async (e) => {
         e.preventDefault();
-        alert('You have submitted the maze')
         const winner = await fetch(`/maze/test/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
@@ -118,7 +114,6 @@ class Test extends Component{
             }
         })
         const parsedResponse = await winner.json();
-        console.log(parsedResponse)
         this.setState({
             youWon:true
         })

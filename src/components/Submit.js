@@ -1,25 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import * as routes from '../constants/routes';
 import { NavLink } from 'react-router-dom';
 
-const OutTime = () =>  
+const Submit = () =>  
 <div class="divHolderTwo">
-<h1>It looks like you ran out of time</h1>
+<h1>You've submitted the maze!</h1>
 <br/>
 
-<h4>Looks like you'll have to try again another time</h4>
+<h4>Check your totem, then decide if you want to make another or test others out</h4>
 <br/>
 <br/>
 <br/>
 <br/>
 <br/>
-<p>Cobb: Now, before you bother telling me it's impossible...</p>
 <br/>
 <br/>
 
 
-<p>Eames: No, it's perfectly possible. <b>It's just bloody difficult.</b></p>
+<p>Cobb: Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
 <br/>
 <br/>
 <br/>
@@ -31,4 +28,4 @@ const OutTime = () =>
     <button className="welcomeButtons" type="submit"><NavLink to={routes.BEST} > Test Mazes </NavLink></button>
 </div>
 
-export default OutTime
+export default Submit

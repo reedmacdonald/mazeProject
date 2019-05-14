@@ -44,6 +44,7 @@ class Maze extends Component{
         })
     }
     changeToRed = () => {
+        console.log(this.state.testing,'<------this.state.testing')
         this.setState({
             submitShowing:'inline',
             finishShowing: 'none',
@@ -52,11 +53,13 @@ class Maze extends Component{
         }
 
     changeToBlack = ()=>{
+        console.log(this.state.testing,'<------this.state.testing')
         this.setState({
             buttonClicked:'black'})
         }
 
     changeButtons = ()=>{
+        console.log(this.state.testing,'<------this.state.testing')
         clearTimeout(this.timer);
         this.setState({
             buildShowing:'none',
@@ -121,8 +124,10 @@ class Maze extends Component{
     }
     
     pushValueUp = (brick) => {
-        !this.state.testing && this.maze.push(brick)
-    }
+        
+            !this.state.testing && this.maze.push(brick)
+        }
+    
 
 
         

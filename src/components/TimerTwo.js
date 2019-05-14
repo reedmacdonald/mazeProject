@@ -1,24 +1,21 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
+import '../App.css';
+import * as routes from '../constants/routes'
 
 
 class TimerTwo extends Component {
     constructor(props) {
         super(props);
-    
-        // set basic logic on start
+  
         this.timerInterval = null;
         this.state = {
           isPaused: false,
           time: props.startTime || 1,
+          outTime: false
         };
       }
-      /*
-      state = {
-          isPaused: false,
-          time: props.startTime || 1
-      };
-      */
+
     
       componentDidMount() {
         this.startTimer();
@@ -30,8 +27,6 @@ class TimerTwo extends Component {
     
       stopTimer = async () => {
         clearInterval(this.timerInterval);
-          alert('Timesup, bucko')
-          
           const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
@@ -41,10 +36,12 @@ class TimerTwo extends Component {
         })
         const parsedResponse = await loser.json();
         console.log(parsedResponse)
+        this.setState({
+            outTime:true
+        })
           
       }
     
-      // update time prop by one
       tick = () => {
           this.state.time==60
           ?this.stopTimer()
@@ -70,12 +67,10 @@ class TimerTwo extends Component {
             const { isPaused } = this.state;
     
             if (!isPaused) {
-              // we are on
-              // start timer, repeat func tick every second
+
               this.startTimer();
             } else {
-              // we are on pause
-              // stop timer
+
               clearInterval(this.timerInterval);
             }
           }
@@ -89,7 +84,9 @@ class TimerTwo extends Component {
       render() {
         // must have
         const { isPaused, time } = this.state;
-        // const {} = this.props;
+        if (this.state.outTime) {
+            return <Redirect to={routes.OUTTIME}/>;
+          }
     
         return (
           <div className="timer">
