@@ -12,7 +12,7 @@ const NavBar = ({currentUser}) =>
     <NavLink to={routes.WELCOME} activeClassName="selected">WELCOME </NavLink>
     {
       currentUser
-        ? <span>hello {currentUser}</span>
+        ? <div><NavLink to={routes.YOURS} activeClassName="selected">YOURS </NavLink></div>
         :  undefined
     }
   </div>
