@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router-dom'
 
 
 class TimerTwo extends Component {
@@ -27,9 +28,20 @@ class TimerTwo extends Component {
         this.timerInterval = setInterval(this.tick, 1000);
       };
     
-      stopTimer = () => {
+      stopTimer = async () => {
+        clearInterval(this.timerInterval);
           alert('Timesup, bucko')
-          clearInterval(this.timerInterval);
+          
+          const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers:{
+                "Content-type" : 'application/json'
+            }
+        })
+        const parsedResponse = await loser.json();
+        console.log(parsedResponse)
+          
       }
     
       // update time prop by one
@@ -87,4 +99,4 @@ class TimerTwo extends Component {
       }
     }
 
-export default TimerTwo;
+export default withRouter(TimerTwo);

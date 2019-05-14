@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 
 const WelcomePage = () =>  
-<div>
+<div class="divHolderTwo">
 <p>COBB:</p>
 <p>Before I describe the job, I have
 to know you could do it.</p>
@@ -33,8 +33,8 @@ COBB</p>
 <br/>
 <br/>
 <br/>
-    <button type="submit"><NavLink to={routes.MAZES} activeClassName="selected"> Make Mazes </NavLink></button>
-    <button type="submit"><NavLink to={routes.BEST} activeClassName="selected"> Test Mazes </NavLink></button>
+    <button className="welcomeButtons" type="submit"><NavLink to={routes.MAZES} > Make Mazes </NavLink></button>
+    <button className="welcomeButtons" type="submit"><NavLink to={routes.BEST} > Test Mazes </NavLink></button>
 </div>
 
 export default WelcomePage

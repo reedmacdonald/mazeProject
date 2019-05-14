@@ -32,8 +32,34 @@
 .holderDiv {
   position: sticky;
   box-shadow: 10px 10px gray;
-  height:580px;
+  height:530px;
   width:460px;
+  margin: 30px 30px;
+  border:10px solid black;
+}
+
+p{
+  margin-top:10px;
+  margin-left:15px;
+}
+
+b{
+  margin-top:10px;
+  margin-left:15px
+}
+
+.welcomeButtons {
+  margin-left: 15px;
+  width:80px;
+  height:30px;
+  background-color: rgba(202, 189, 189, 0.986);
+}
+
+.divHolderTwo {
+  position: sticky;
+  box-shadow: 10px 10px gray;
+  height:530px;
+  width:480px;
   margin: 30px 30px;
   border:10px solid black;
 }
@@ -79,13 +105,14 @@
 
 .outOfBounds {
   position: absoulute;
-  width:30px;
+  width:35px;
   height:500px;
   margin: 0;
   background-color: #61dafb;
   float:left;
   margin-left: 0px;
-  margin-top: 30px
+  margin-top: 30px;
+  opacity: .6
   
 }
 
@@ -97,7 +124,8 @@
   background-color: #61dafb;
   float: right;
   margin-left:430px;
-  margin-top: 30px
+  margin-top: 30px;
+  opacity: .6
 }
 
 .outOfBoundsThree {
@@ -108,7 +136,8 @@
   background-color: #61dafb;
   float: right;
   margin-left:0px;
-  margin-top: 0px
+  margin-top: 0px;
+  opacity:.6
 }
 
 input {
@@ -142,7 +171,7 @@ button {
 .giveName {
   height:25px;
   width:110px;
-  background-color: rgb(224, 247, 95);
+  background-color: rgba(202, 189, 189, 0.986);
   outline: #282c34;
   border:solid black 1px;
   margin:10px;
@@ -150,14 +179,16 @@ button {
 
 .nameForm {
   position: absolute;
-  margin-top: 550px;
-  margin-left:200px
+  margin-top: 580px;
+  margin-left:90px
 }
 
 .finishMaze {
   position: absolute;
   width:407px;
-  margin-top: 30px
+  margin-top: 30px;
+  background-color: rgba(202, 189, 189, 0.986); 
+  
 }
 
 .startEndButton{
@@ -165,13 +196,15 @@ button {
   position: absolute;
   margin-top: 450px;
   width:402px;
-  height: 78px
+  height: 78px;
+  background-color: rgba(202, 189, 189, 0.986);
+  
 }
 
 .greatBackground {
   width:1600px;
   height:900px;
-  background-image: linear-gradient(to bottom right, gray, white);
+  background-image: linear-gradient(to bottom right, rgba(202, 189, 189, 0.986), white);
 }
 
 .cell:nth-child(3n) {

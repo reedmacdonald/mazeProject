@@ -34,11 +34,24 @@ class Test extends Component{
             name:testName,
             maze:
             testMaze.map((element)=>{
-            return <div><Square testing={this.state.testing} className="cell" color={element=="1"?'black':'white'} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
+            return <div><Square hit ={this.hit} testing={this.state.testing} className="cell" color={element=="1"?'black':'white'} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
         }
         )
     })
 
+    }
+
+    youLost = async () => {
+        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers:{
+                "Content-type" : 'application/json'
+            }
+        })
+        const parsedResponse = await loser.json();
+        
+        console.log(parsedResponse)
     }
 
     outOfBounds = async () =>{
@@ -64,6 +77,19 @@ class Test extends Component{
         this.setState({
             testing:true
         })
+    }
+
+    hit = async () => {
+        alert('you hit a wall')
+        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers:{
+                "Content-type" : 'application/json'
+            }
+        })
+        const parsedResponse = await loser.json();
+        console.log(parsedResponse)
     }
 
     submitMaze = async (e) => {
@@ -120,12 +146,12 @@ class Square extends Component{
         };
       }
     
-    hitWall = () => {
-        alert('you hit a wall')
+    hitWall = async () => {
+        this.props.hit()
     }
 
     switchColor = ()=>{
-        this.state.color=='black' && alert('You hit a wall')
+        this.state.color=='black' && this.hitWall()
         this.setState({
             color:'red'
         })
