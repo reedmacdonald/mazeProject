@@ -29,11 +29,6 @@ class Test extends Component{
 
     getMaze = async (e) => {
         const mazeResponse = await fetch(`/maze/test/${this.props.match.params.testId}`)
-        // const mazeResponse = await fetch('/maze/test/${this.props.match.params.testId}')
-        // exress backend call 
-        // app.get('/maze/test/:id', (req, res) => {
-        //     Maze.findById(res.params,id)
-        // })
         const parsedResponse = await mazeResponse.json();
         console.log(parsedResponse.data,'<----parsedResponse.data')
         testMaze = parsedResponse.data.maze;
