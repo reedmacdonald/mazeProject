@@ -125,7 +125,9 @@ class Maze extends Component{
     
     pushValueUp = (brick) => {
         
-            !this.state.testing && this.maze.push(brick)
+            if(this.state.testing == false && this.state.buttonClicked == 'black'){
+                 this.maze.push(brick)
+            }
         }
     
 
@@ -137,7 +139,7 @@ class Maze extends Component{
         return <Redirect to={routes.HITWALL}/>;
       }
       if (this.state.youWon) {
-        return <Redirect to={routes.YOUWON}/>;
+        return <Redirect to={routes.SUBMIT}/>;
       }
       
       if (this.state.outBounds) {

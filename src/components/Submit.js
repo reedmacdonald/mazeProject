@@ -1,3 +1,6 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 import * as routes from '../constants/routes';
 import { NavLink } from 'react-router-dom';
 
@@ -16,7 +19,9 @@ const Submit = () =>
 <br/>
 
 
-<p>Cobb: Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
+<p>Cobb: An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
