@@ -17,6 +17,7 @@ import Yours from './components/Yours'
 import Instructions from './components/Instructions'
 import Submit from './components/Submit'
 import Pokemon from './components/Pokemon'
+import DumbNavBar from './components/DumbNavBar'
 
 
 import * as routes from './constants/routes'
@@ -55,10 +56,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="greatBackground">
+      this.state.currentUser
+      ?<div className="greatBackground">
+      
         <NavBar currentUser={this.state.currentUser}/>
         <Switch>
-
           <Route exact path={routes.BEST} render={() => <TopMazes/>} />
           <Route exact path={routes.MAZES} render={() => <Maze userName={this.state.currentUser}/>} />
           <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
@@ -75,9 +77,10 @@ class App extends Component {
           <Route exact path={routes.POKEMON} render={() => <Pokemon/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
           <Route render={() => <div>NOT FOUND</div>} />
-          
         </Switch>
+        
       </div>
+      :<div className="greatBackground"><DumbNavBar/><Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} /></div>
     );
   }
 }

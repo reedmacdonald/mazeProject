@@ -1,10 +1,10 @@
-export const ROOT  = '/'
+
 export const HOME = '/home'
 export const POSTS = '/posts'
 export const USERS = '/users'
 export const LOGIN = '/login'
 export const MAZES = '/mazes'
-export const WELCOME = '/welcome'
+export const WELCOME = '/'
 export const BEST = '/best'
 export const TEST = '/test'
 export const YOUWON = '/youwon'

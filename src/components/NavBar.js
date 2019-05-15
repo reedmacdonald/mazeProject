@@ -10,7 +10,6 @@ const NavBar = ({currentUser}) =>
     <NavLink to={routes.BEST} className="link" activeClassName="selected">BEST </NavLink>
     <NavLink to={routes.ALL} className="link" activeClassName="selected">ALL </NavLink>
     <NavLink to={routes.MAZES} className="link" activeClassName="selected">CREATE </NavLink>
-    <NavLink to={routes.WELCOME} className="link" activeClassName="selected">WELCOME </NavLink>
     <NavLink to={routes.POKEMON} className="link" activeClassName="selected">ChiCRIME </NavLink>
     {
       currentUser

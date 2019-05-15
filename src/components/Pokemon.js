@@ -32,7 +32,7 @@ class Pokemon extends Component {
        const crimesJson = await crimes.json();
        console.log(crimesJson[0].primary_type)
        this.setState({
-           type:crimesJson[0].primary_type
+           type:crimesJson[10].primary_type
        })
        return crimesJson;
        this.setState({crimes: crimesJson,});
