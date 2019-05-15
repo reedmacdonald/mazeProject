@@ -29,6 +29,11 @@ class Test extends Component{
 
     getMaze = async (e) => {
         const mazeResponse = await fetch(`/maze/test/${this.props.match.params.testId}`)
+        // const mazeResponse = await fetch('/maze/test/${this.props.match.params.testId}')
+        // exress backend call 
+        // app.get('/maze/test/:id', (req, res) => {
+        //     Maze.findById(res.params,id)
+        // })
         const parsedResponse = await mazeResponse.json();
         console.log(parsedResponse.data,'<----parsedResponse.data')
         testMaze = parsedResponse.data.maze;
@@ -117,7 +122,7 @@ class Test extends Component{
 
     didntStart = (e) => {
         e.preventDefault();
-        
+        alert('You clicked submit but you didnt start so it doesnt count')
     }
     
 
@@ -189,4 +194,4 @@ class Square extends Component{
 
 
 
-export default withRouter(Test);
+export default withRouter(Test)

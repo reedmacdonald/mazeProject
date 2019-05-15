@@ -72,6 +72,14 @@ button{
   border-radius: .25rem
 }
 
+.switch-wrapper {
+  position: relative;
+}
+ 
+.switch-wrapper > div {
+  position: absolute;
+}
+
 p{
   margin-top:10px;
   margin-left:15px;
