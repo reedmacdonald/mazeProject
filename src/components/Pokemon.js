@@ -48,7 +48,7 @@ class Pokemon extends Component {
     render(){
     return (
       <div className="divHolder">
-      <h1>The Last Crime in Chicago</h1>
+      <h1>The Last Crime in Chicago v</h1>
       <h2>{this.state.type}</h2>
 
       </div>

@@ -15,7 +15,7 @@ class Maze extends Component{
             buildShowing: 'inline',
             testShowing: 'none',
             testing: false,
-            clicked: true,
+            clicked: false,
             finishShowing:'inline',
             submitShowing:'none',
             name:'',
@@ -75,11 +75,13 @@ class Maze extends Component{
 
         if(this.state.buttonClicked=='black'){
             this.setState({
-                buttonClicked:''
+                buttonClicked:'',
+                clicked:true
             })}
         else if(this.state.buttonClicked=='' && !this.state.testing){
             this.setState({
-                buttonClicked:'black'
+                buttonClicked:'black',
+                clicked:false
             })
         }
         }
@@ -192,7 +194,6 @@ class Square extends Component{
           color: null,
           colorToChange:null,
           changeColor: false,
-          clicked:this.props.clicked,
         };
       }
     
@@ -217,7 +218,7 @@ class Square extends Component{
 
     render(){
         return(
-            <div className="boxes" onMouseOver={this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
+            <div className="boxes" onMouseOver={this.props.clicked==false?this.switchColor:undefined} style={{'height':'5px','width':'5px','backgroundColor':this.state.changeColor ? this.state.colorToChange : this.state.color,'margin':'0'}}>
             </div>
         )
     }
