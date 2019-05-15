@@ -6,7 +6,7 @@ import './NavBar.css'
 
 const NavBar = ({currentUser}) =>
   <div className="navBar">
-    <NavLink to={routes.INSTRUCTIONS} className="link" activeClassName="selected">INSTRUCTIONS </NavLink>
+    <NavLink to={routes.INSTRUCTIONS} className="link" activeClassName="selected">RULE SET </NavLink>
     <NavLink to={routes.BEST} className="link" activeClassName="selected">BEST </NavLink>
     <NavLink to={routes.ALL} className="link" activeClassName="selected">ALL </NavLink>
     <NavLink to={routes.MAZES} className="link" activeClassName="selected">CREATE </NavLink>
