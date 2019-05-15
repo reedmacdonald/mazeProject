@@ -11,7 +11,7 @@ class TimerTwo extends Component {
         this.timerInterval = null;
         this.state = {
           isPaused: false,
-          time: props.startTime || 1,
+          time: props.startTime || 60,
           outTime: false
         };
       }
@@ -43,9 +43,9 @@ class TimerTwo extends Component {
       }
     
       tick = () => {
-          this.state.time==60
+          this.state.time==0
           ?this.stopTimer()
-          :this.setState(prevState => ({ time: prevState.time + 1 }))
+          :this.setState(prevState => ({ time: prevState.time - 1 }))
       };
     
       handleTimerToggle1(newPausedStatus) {

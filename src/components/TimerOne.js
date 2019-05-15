@@ -1,23 +1,19 @@
 import React, { Component } from "react";
+import { withRouter, Redirect } from 'react-router-dom'
+import '../App.css';
+import * as routes from '../constants/routes'
 
 
 class TimerOne extends Component {
   constructor(props) {
     super(props);
-
-    // set basic logic on start
     this.timerInterval = null;
     this.state = {
-      isPaused: false,
-      time: props.startTime || 1,
+      time: props.startTime || 180,
+      outTime: false
     };
   }
-  /*
-  state = {
-      isPaused: false,
-      time: props.startTime || 1
-  };
-  */
+
 
   componentDidMount() {
     this.startTimer();
@@ -28,56 +24,31 @@ class TimerOne extends Component {
   };
 
   stopTimer = () => {
-      alert('Timesup, bucko')
+      
       clearInterval(this.timerInterval);
-  }
-
-  // update time prop by one
-  tick = () => {
-      this.state.time==180
-      ?this.stopTimer()
-      :this.setState(prevState => ({ time: prevState.time + 1 }))
-  };
-
-  handleTimerToggle1(newPausedStatus) {
-    return function() {
       this.setState({
-        isPaused: newPausedStatus
-      });
-    };
+          outTime:true
+      })
   }
 
-  handleTimerToggle = newPausedStatus => () => {
-    // change isPause status
-    this.setState(
-      {
-        isPaused: newPausedStatus
-      },
-      () => {
-        // handle some actions after component rerendered with new state
-        const { isPaused } = this.state;
-
-        if (!isPaused) {
-          // we are on
-          // start timer, repeat func tick every second
-          this.startTimer();
-        } else {
-          // we are on pause
-          // stop timer
-          clearInterval(this.timerInterval);
-        }
-      }
-    );
+  tick = () => {
+      this.state.time==0
+      ?this.stopTimer()
+      :this.setState(prevState => ({ time: prevState.time - 1 }))
   };
+
 
   componentWillUnmount() {
     clearInterval(this.timerInterval);
   }
 
   render() {
-    // must have
+    if (this.state.outTime) {
+        return <Redirect to={routes.OUTTIME}/>;
+      }
+    
     const { isPaused, time } = this.state;
-    // const {} = this.props;
+    
 
     return (
       <div className="timer">
