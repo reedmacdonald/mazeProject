@@ -122,7 +122,7 @@ class Test extends Component{
 
     didntStart = (e) => {
         e.preventDefault();
-        alert('You clicked submit but you didnt start so it doesnt count')
+        
     }
     
 

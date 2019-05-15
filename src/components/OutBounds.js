@@ -12,7 +12,7 @@ const OutBounds = () =>
 <h1>Well, it looks like you are out of bounds</h1>
 <br/>
 
-<h4>Looks like you'll have to try again another time</h4>
+<h4>You'll have to try again another time</h4>
 <br/>
 <br/>
 <br/>

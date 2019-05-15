@@ -8,7 +8,7 @@ const OutTime = () =>
 <h1>It looks like you ran out of time</h1>
 <br/>
 
-<h4>Looks like you'll have to try again another time</h4>
+<h4>You'll have to try again another time</h4>
 <br/>
 <br/>
 <br/>

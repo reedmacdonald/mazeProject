@@ -157,6 +157,7 @@ class Maze extends Component{
           )
       })
       return (
+          <div>
       <div className="holderDiv" onDoubleClick={this.changeToClicked}> 
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
@@ -178,6 +179,7 @@ class Maze extends Component{
           <button type="submit"> Give name</button>
       </form>
       <TimerOne test={this.state.testing}/>
+      </div>
       </div>
   )}
 }

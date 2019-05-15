@@ -1,4 +1,28 @@
 .selected {
-    color: red;
-    border-bottom: 1px solid red;
+    color: black;
+    border-bottom: 1px solid black;
   }
+
+.navBar {
+    width:900px;
+    padding-top: 10px
+}
+
+.link {
+    padding-left:30px;
+    padding-right:30px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    text-decoration: none
+}
+
+.link:hover {
+    background-color: rgb(185, 184, 184)
+}
+
+.link:active{
+    color:none
+}
+.link:focus{
+    color:none
+}
