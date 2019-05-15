@@ -6,6 +6,10 @@ import './NavBar.css'
 
 const DumbNavBar = ({currentUser}) =>
   <div className="navBar">
+      <NavLink to={routes.INSTRUCTIONS} className="link" activeClassName="selected">     </NavLink>
+
+    
+ 
 
   </div>
 
