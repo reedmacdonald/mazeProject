@@ -7,7 +7,6 @@ import * as routes from '../constants/routes'
 class TimerTwo extends Component {
     constructor(props) {
         super(props);
-  
         this.timerInterval = null;
         this.state = {
           isPaused: false,
@@ -48,42 +47,16 @@ class TimerTwo extends Component {
           :this.setState(prevState => ({ time: prevState.time - 1 }))
       };
     
-      handleTimerToggle1(newPausedStatus) {
-        return function() {
-          this.setState({
-            isPaused: newPausedStatus
-          });
-        };
-      }
+  
     
-      handleTimerToggle = newPausedStatus => () => {
-        // change isPause status
-        this.setState(
-          {
-            isPaused: newPausedStatus
-          },
-          () => {
-            // handle some actions after component rerendered with new state
-            const { isPaused } = this.state;
-    
-            if (!isPaused) {
 
-              this.startTimer();
-            } else {
-
-              clearInterval(this.timerInterval);
-            }
-          }
-        );
-      };
     
       componentWillUnmount() {
         clearInterval(this.timerInterval);
       }
     
       render() {
-        // must have
-        const { isPaused, time } = this.state;
+        const { time } = this.state;
         if (this.state.outTime) {
             return <Redirect to={routes.OUTTIME}/>;
           }
