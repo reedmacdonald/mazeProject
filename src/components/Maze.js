@@ -66,6 +66,7 @@ class Maze extends Component{
         this.setState({
             buildShowing:'none',
             testShowing:'inline',
+            buttonClicked:''
         })
     }
     outOfBounds = () => {
