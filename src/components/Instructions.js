@@ -30,14 +30,13 @@ class Instructions extends Component{
 <h3>Creating Mazes</h3>
 <ul className="instructionList">
     <li>The timer will start as soon as the page is loaded</li>
-    <li>You are given three minutes</li>
-    <li>The timer will run until not only when you are done building, but also testing</li>
+    <li>You are given three minutes. This isn't canon, but two minutes just seemed too hard</li>
     <li>Click on "Build Maze" to begin building the maze</li>
     <li>You are allowed to go out of bounds when building the game</li>
     <li><b>Double click to lift the "pen" up. Double click again to put it back down.</b></li>
     <li>Name your maze before submitting, otherwise it won't be accessable</li>
     <li>You test the maze to prove that it works. You cannot lift up your pen, go out of bounds, or touch the walls while doing this</li>
-    <li>If you'd like to delete a maze, login and then find click the delete button in the YOURS tab</li>
+    <li>If you'd like to delete a maze, login and then click the delete button in the YOURS tab</li>
 </ul>
 <br/>
 <h3>Testing Other Mazes</h3>
