@@ -56,11 +56,11 @@ class App extends Component {
 
   render() {
     return (
-      this.state.currentUser
-      ?<div className="greatBackground">
+      <div className="greatBackground">
       
         <NavBar currentUser={this.state.currentUser}/>
         <Switch>
+          <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
           <Route exact path={routes.BEST} render={() => <TopMazes/>} />
           <Route exact path={routes.MAZES} render={() => <Maze userName={this.state.currentUser}/>} />
           <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
@@ -80,7 +80,7 @@ class App extends Component {
         </Switch>
         
       </div>
-      :<div className="greatBackground"><DumbNavBar/><Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} /></div>
+      
     );
   }
 }

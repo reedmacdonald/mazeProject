@@ -34,6 +34,7 @@ class Maze extends Component{
         this.setState({
             userName:this.props.userName
         })
+        
     }
 
     timeUp = () => {
@@ -49,7 +50,8 @@ class Maze extends Component{
             submitShowing:'inline',
             finishShowing: 'none',
             buttonClicked:'red',
-            testing: true})
+            testing: true,
+            clicked: false})
         }
 
     changeToBlack = ()=>{

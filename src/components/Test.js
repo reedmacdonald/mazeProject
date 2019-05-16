@@ -29,11 +29,7 @@ class Test extends Component{
 
     getMaze = async (e) => {
         const mazeResponse = await fetch(`/maze/test/${this.props.match.params.testId}`)
-        // const mazeResponse = await fetch('/maze/test/${this.props.match.params.testId}')
-        // exress backend call 
-        // app.get('/maze/test/:id', (req, res) => {
-        //     Maze.findById(res.params,id)
-        // })
+
         const parsedResponse = await mazeResponse.json();
         console.log(parsedResponse.data,'<----parsedResponse.data')
         testMaze = parsedResponse.data.maze;
@@ -178,6 +174,7 @@ class Square extends Component{
     }
 
     switchColor = ()=>{
+        
         this.state.color=='black' && this.hitWall()
         this.setState({
             color:'red'
@@ -186,7 +183,7 @@ class Square extends Component{
 
     render(){
         return(
-            <div className="boxes" onMouseOver = {!this.props.testing?this.switchColor:undefined} style={{'height':'5px','width':'5px','backgroundColor':this.state.color,'margin':'0'}}>
+            <div className="boxes" onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.color,'margin':'0'}}>
             </div>
         )
     }

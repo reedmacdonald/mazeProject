@@ -65,8 +65,8 @@ COBB</p>
           <input id = "uniqueIDThree" name = "mazeName" className="giveName" type="text" placeholder=" Name " style={{'display':this.props.loginDisplay}}></input>
           <button type="submit" style={{'display':this.props.loginDisplay}}> Sign-Up</button>
       </form>
-    <button className="welcomeButtons" type="submit" style={{'display':this.props.buttonDisplay}}><NavLink to={routes.MAZES} > Make Mazes </NavLink></button>
-    <button className="welcomeButtons" type="submit" style={{'display':this.props.buttonDisplay}}><NavLink to={routes.BEST} > Test Mazes </NavLink></button>
+    <button className="welcomeButtons" type="submit" style={{'display':this.props.buttonDisplay}}><NavLink to={routes.INSTRUCTIONS} > Ruleset </NavLink></button>
+ 
 </div>
           )
       }
