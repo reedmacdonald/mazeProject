@@ -77,7 +77,7 @@ class App extends Component {
           <Route exact path={routes.POKEMON} render={() => <Pokemon/>} />
           <Route exact path={routes.CONTACT} render={() => <Contact/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
-          <Route render={() => <div>NOT FOUND</div>} />
+          <Route render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
         </Switch>
         
       </div>
