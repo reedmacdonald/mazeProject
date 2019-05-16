@@ -228,6 +228,11 @@ button {
   padding:0;
 }
 
+button:active {
+  
+  transform: translateY(4px);
+}
+
 .giveName {
   height:25px;
   width:110px;
@@ -237,6 +242,8 @@ button {
   margin:10px;
   border-radius: .25rem
 }
+
+
 
 .nameForm {
   position: absolute;

@@ -34,9 +34,9 @@ class Instructions extends Component{
     <li>Click on "Build Maze" to begin building the maze</li>
     <li>You are allowed to go out of bounds when building the game</li>
     <li><b>Double click to lift the "pen" up. Double click again to put it back down.</b></li>
-    <li>Name your maze before submitting, otherwise it won't be accessable</li>
+    <li>Name your maze before submitting, otherwise it won't be accessable. Type in the name and click "give name". To change the name just do that again. Nothing happens onscreen.</li>
     <li>You test the maze to prove that it works. You cannot lift up your pen, go out of bounds, or touch the walls while doing this</li>
-    <li>If you'd like to delete a maze, login and then click the delete button in the YOURS tab</li>
+    <li>If you'd like to delete a maze, login and then click the delete button in the "yours" tab</li>
 </ul>
 <br/>
 <h3>Testing Other Mazes</h3>
@@ -44,7 +44,7 @@ class Instructions extends Component{
     <li>Click "Test Maze" to start testing</li>
     <li>The timer will start as soon as you enter the page</li>
     <li>You have one minute to complete the maze</li>
-    <li>There are some ways to cheat. We are aware. But in the end you're just cheating yourself</li>
+    <li>There are some ways to cheat. But in the end you'd just be cheating yourself</li>
     <li>You cannot touch the walls or go out of bounds while testing</li>
 </ul>
 </div>

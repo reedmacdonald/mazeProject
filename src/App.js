@@ -18,6 +18,8 @@ import Instructions from './components/Instructions'
 import Submit from './components/Submit'
 import Pokemon from './components/Pokemon'
 import DumbNavBar from './components/DumbNavBar'
+import Contact from './components/Contact'
+
 
 
 import * as routes from './constants/routes'
@@ -73,6 +75,7 @@ class App extends Component {
           <Route exact path={routes.SUBMIT} render={() => <Submit/>} />
           <Route exact path={routes.INSTRUCTIONS} render={() => <Instructions/>} />
           <Route exact path={routes.POKEMON} render={() => <Pokemon/>} />
+          <Route exact path={routes.CONTACT} render={() => <Contact/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
           <Route render={() => <div>NOT FOUND</div>} />
         </Switch>
