@@ -46,7 +46,7 @@ to know you could do it.</p>
 <p>*Ariadne raises her eyebrows.*</p>
 <br/>
 <p>COBB:</p>
-<b>You have two minutes to draw a maze
+<b>You have three* minutes to draw a maze
 that takes me one minute to solve.</b>
 <br/>
 <br/>
@@ -58,11 +58,11 @@ COBB</p>
 <br/>
 <br/>
     <form className="nameFormTwo" onSubmit={this.pushLoginUp}>
-          <input id = "uniqueIDTwo" name = "mazeName" className="giveName" type="text" placeholder=" Name " style={{'display':this.props.loginDisplay}}></input>
+          <input id = "uniqueIDTwo" name = "mazeName" className="giveName" type="text" placeholder=" Username " style={{'display':this.props.loginDisplay}}></input>
           <button type="submit" style={{'display':this.props.loginDisplay}}> Login</button>
       </form>
       <form className="nameFormThree" onSubmit={this.pushSignUpUp}>
-          <input id = "uniqueIDThree" name = "mazeName" className="giveName" type="text" placeholder=" Name " style={{'display':this.props.loginDisplay}}></input>
+          <input id = "uniqueIDThree" name = "mazeName" className="giveName" type="text" placeholder=" Username " style={{'display':this.props.loginDisplay}}></input>
           <button type="submit" style={{'display':this.props.loginDisplay}}> Sign-Up</button>
       </form>
     <button className="welcomeButtons" type="submit" style={{'display':this.props.buttonDisplay}}><NavLink to={routes.INSTRUCTIONS} > Ruleset </NavLink></button>

@@ -41,8 +41,6 @@ class App extends Component {
   }
 
   signUp = (userName) => {
-    //Create user
-    
     this.setState({
       currentUser:userName,
       loginDisplay:'none',
