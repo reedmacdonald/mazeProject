@@ -37,7 +37,7 @@ class Yours extends Component{
         this.setState({
             bestMazes:finalMaze.map((element)=>
     
-            <div><li><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><button onClick={        
+            <div><li><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><br/><button onClick={        
                 async ()=>{
                 const loser = await fetch(`/maze/delete/${element._id}`, {
                 method: 'DELETE',
@@ -49,7 +49,7 @@ class Yours extends Component{
             )
             const parsedResponse = await loser.json();
             this.getBestOf()
-        }}>Delete</button><br/></div>)
+        }}>Delete</button><br/><br/><br/></div>)
 
         })
         return finalMaze
