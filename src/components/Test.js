@@ -27,7 +27,7 @@ class Test extends Component{
     
 
     getMaze = async (e) => {
-        const mazeResponse = await fetch(`/maze/test/${this.props.match.params.testId}`)
+        const mazeResponse = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/${this.props.match.params.testId}`)
         const parsedResponse = await mazeResponse.json();
         console.log(parsedResponse.data,'<----parsedResponse.data')
         testMaze = parsedResponse.data.maze;
@@ -45,7 +45,7 @@ class Test extends Component{
     }
 
     youLost = async () => {
-        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
+        const loser = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
@@ -57,7 +57,7 @@ class Test extends Component{
     }
 
     outOfBounds = async () =>{
-        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
+        const loser = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
@@ -85,7 +85,7 @@ class Test extends Component{
     }
 
     hit = async () => {
-        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
+        const loser = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
@@ -100,7 +100,7 @@ class Test extends Component{
 
     submitMaze = async (e) => {
         e.preventDefault();
-        const winner = await fetch(`/maze/test/${this.props.match.params.testId}`, {
+        const winner = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
