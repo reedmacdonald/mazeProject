@@ -10,7 +10,8 @@ class TimerOne extends Component {
     this.timerInterval = null;
     this.state = {
       time: props.startTime || 180,
-      outTime: false
+      outTime: false,
+      testing: this.props.testing
     };
   }
 
@@ -31,6 +32,10 @@ class TimerOne extends Component {
       })
   }
 
+  theyTesting = () => {
+    clearInterval(this.timerInterval);
+  }
+
   tick = () => {
       this.state.time==0
       ?this.stopTimer()
@@ -45,6 +50,9 @@ class TimerOne extends Component {
   render() {
     if (this.state.outTime) {
         return <Redirect to={routes.OUTTIME}/>;
+      }
+      if (this.props.test){
+          this.theyTesting()
       }
     
     const { isPaused, time } = this.state;
