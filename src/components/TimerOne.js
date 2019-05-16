@@ -51,7 +51,7 @@ class TimerOne extends Component {
     if (this.state.outTime) {
         return <Redirect to={routes.OUTTIME}/>;
       }
-      if (this.props.test){
+      if (this.props.test=='inline'){
           this.theyTesting()
       }
     

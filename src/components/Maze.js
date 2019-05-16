@@ -181,7 +181,7 @@ class Maze extends Component{
           <input id = "uniqueID" name = "mazeName" className="giveName" type="text" placeholder=" Name of Your maze"></input>
           <button type="submit"> Give name</button>
       </form>
-      <TimerOne test={this.state.testing}/>
+      <TimerOne test={this.state.testShowing}/>
       </div>
       </div>
   )}
