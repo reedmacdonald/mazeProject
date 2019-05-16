@@ -79,7 +79,8 @@ class Test extends Component{
     }
 
 
-    attemptMaze = () => {
+    attemptMaze = (e) => {
+        e.preventDefault()
         this.setState({
             testing:true
         })
@@ -118,7 +119,6 @@ class Test extends Component{
 
     didntStart = (e) => {
         e.preventDefault();
-        alert('You clicked submit but you didnt start so it doesnt count')
     }
     
 
@@ -137,6 +137,8 @@ class Test extends Component{
         return <Redirect to={routes.OUTTIME}/>;
       }
 
+
+
       return (
           <div className="holderDiv">
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
@@ -147,9 +149,10 @@ class Test extends Component{
         <div className="grid">
         {this.state.maze}
         </div>
-        </form>
+        
 
         <button type="submit" onClick={this.attemptMaze} className="startEndButton" style = {{'fontSize':'30px'}}>Attempt Maze</button>
+        </form>
         <h1 className="displayName">{this.state.name}</h1>
         <TimerTwo />
         </div>
@@ -165,7 +168,7 @@ class Square extends Component{
           color: this.props.color,
           colorToChange:null,
           changeColor: false,
-          clicked:this.props.clicked
+          clicked:this.props.clicked,
         };
       }
     
@@ -183,7 +186,7 @@ class Square extends Component{
 
     render(){
         return(
-            <div className="boxes" onMouseOver = {this.switchColor} style={{'height':'5px','width':'5px','backgroundColor':this.state.color,'margin':'0'}}>
+            <div className="boxes" onMouseOver = {this.props.testing ? this.switchColor: undefined} style={{'height':'5px','width':'5px','backgroundColor':this.state.color,'margin':'0'}}>
             </div>
         )
     }

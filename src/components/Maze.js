@@ -93,8 +93,6 @@ class Maze extends Component{
         var nameValue = document.getElementById("uniqueID").value
         this.setState({
             name: nameValue
-        }, () => {
-            alert(`name is now ${this.state.name}`)
         })
         
     }
