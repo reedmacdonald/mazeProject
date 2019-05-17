@@ -1,5 +1,7 @@
 
+# Reed Maze Page
 
+***
 
 Description:
 This is a game where you make mazes and test other peoples mazes to see if you can solve them. I chose to make it because I like the movie Inception and wanted to see if I could make this scene into a website: 
