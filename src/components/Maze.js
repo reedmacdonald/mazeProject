@@ -105,7 +105,7 @@ class Maze extends Component{
             maze:this.maze,
             userName:this.state.userName
         }
-        const mazeResponse = await fetch('https://reedmazebackend.herokuapp.com/maze', {
+        const mazeResponse = await fetch('https://reedmazebackend.herokuapp.com/maze/maze', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(thingToSend),
