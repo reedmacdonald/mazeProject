@@ -100,7 +100,9 @@ class Maze extends Component{
 
     handleSubmit = async (e) => {
         if (this.state.name==''){
+            e.preventDefault();
             alert('Please add a name')
+
         }
         else
         {e.preventDefault();
