@@ -5,9 +5,7 @@ Description:
 This is a game where you make mazes and test other peoples mazes to see if you can solve them. I chose to make it because I like the movie Inception and wanted to see if I could make this scene into a website: 
 [Inception](https://youtu.be/V3-a58Wt2tk?t=28)
 
-```
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/6G1RYAO"><a href="//imgur.com/6G1RYAO">Wireframe</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-```
+[Wireframe](https://imgur.com/gallery/6G1RYAO)
 
 Technologies used:
 1.JavaScript
