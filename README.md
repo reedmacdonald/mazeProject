@@ -7,7 +7,7 @@ This is a game where you make mazes and test other peoples mazes to see if you c
 
 ***
 
-[Wireframe](https://imgur.com/gallery/6G1RYAO)
+[Wireframe]:(https://i.imgur.com/0K9k26X.jpg)
 
 Technologies used:
 1. JavaScript
