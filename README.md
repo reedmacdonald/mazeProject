@@ -7,8 +7,10 @@ This is a game where you make mazes and test other peoples mazes to see if you c
 
 ***
 
-Wireframe
-[logo]:(https://i.imgur.com/0K9k26X.jpg)
+Reference-style: 
+![alt text][logo]
+
+[logo]: https://i.imgur.com/0K9k26X.jpg "Logo Title Text 2"
 
 ***
 
