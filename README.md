@@ -8,12 +8,12 @@ This is a game where you make mazes and test other peoples mazes to see if you c
 [Wireframe](https://imgur.com/gallery/6G1RYAO)
 
 Technologies used:
-1.JavaScript
-2.React
-3.Css
-4.MongoDB
-5.Mongoose
-6.Heroku
+1. JavaScript
+2. React
+3. Css
+4. MongoDB
+5. Mongoose
+6. Heroku
 7. Chicago Police Department API
 
 Contributors:
