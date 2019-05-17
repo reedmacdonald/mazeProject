@@ -99,13 +99,8 @@ class Maze extends Component{
     }
 
     handleSubmit = async (e) => {
-        if (this.state.name==''){
-            e.preventDefault();
-            alert('Please add a name')
 
-        }
-        else
-        {e.preventDefault();
+        e.preventDefault();
         const thingToSend={
             name:this.state.name,
             maze:this.maze,
@@ -125,7 +120,7 @@ class Maze extends Component{
         this.setState({
             youWon:true
         })}
-    }
+    
 
     hit = async () => {
         this.setState({
