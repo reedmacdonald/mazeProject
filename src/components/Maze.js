@@ -99,13 +99,17 @@ class Maze extends Component{
     }
 
     handleSubmit = async (e) => {
-        e.preventDefault();
+        if (this.state.name==''){
+            alert('Please add a name')
+        }
+        else
+        {e.preventDefault();
         const thingToSend={
             name:this.state.name,
             maze:this.maze,
             userName:this.state.userName
         }
-        const mazeResponse = await fetch('https://reedmazebackend.herokuapp.com/maze/', {
+        const mazeResponse = await fetch('https://reedmazebackend.herokuapp.com/maze', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(thingToSend),
@@ -118,7 +122,7 @@ class Maze extends Component{
         console.log(parsedResponse)
         this.setState({
             youWon:true
-        })
+        })}
     }
 
     hit = async () => {
