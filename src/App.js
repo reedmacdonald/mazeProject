@@ -20,6 +20,12 @@ import Pokemon from './components/Pokemon'
 import DumbNavBar from './components/DumbNavBar'
 import Contact from './components/Contact'
 import firebase from './components/Firebase'
+import WaitingRoom from './components/WaitingRoom'
+import GameRoom from './components/GameRoom'
+import Loading from './components/Loading'
+import LoadingTwo from './components/LoadingTwo'
+import BattleRoom from './components/BattleRoom'
+import CheckWin from './components/CheckWin'
 
 
 
@@ -32,6 +38,13 @@ class App extends Component {
     currentUser: null,
     loginDisplay: 'inline',
     buttonDisplay: 'none',
+    currentOpponent: null
+  }
+
+  setOpponent = (opponent) => {
+    this.setState({
+      currentOpponent:opponent
+    })
   }
 
   login = (userName) => {
@@ -72,6 +85,7 @@ class App extends Component {
         <Switch>
           <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
           <Route exact path={routes.BEST} render={() => <TopMazes/>} />
+          <Route exact path={routes.CHECKWIN} render={() => <CheckWin/>} />
           <Route exact path={routes.MAZES} render={() => <Maze userName={this.state.currentUser}/>} />
           <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
@@ -82,11 +96,17 @@ class App extends Component {
           <Route exact path={routes.OUTTIME} render={() => <OutTime/>} />
           <Route exact path={routes.HITWALL} render={() => <HitWall/>} />
           <Route exact path={routes.ALL} render={() => <AllMazes/>} />
+          <Route exact path={routes.WAITINGROOM} render={() => <WaitingRoom setOpponent={this.setOpponent}/>} />
+          <Route exact path={routes.GAMEROOM} render={() => <GameRoom user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           <Route exact path={routes.SUBMIT} render={() => <Submit/>} />
           <Route exact path={routes.INSTRUCTIONS} render={() => <Instructions/>} />
           <Route exact path={routes.POKEMON} render={() => <Pokemon/>} />
           <Route exact path={routes.CONTACT} render={() => <Contact/>} />
+          <Route exact path={routes.LOADING} render={() => <Loading opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.LOADINGTWO} render={() => <LoadingTwo opponent={this.state.currentOpponent}/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
+          <Route exact path={routes.BATTLEROOM} render={() => <BattleRoom user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          
           <Route render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
         </Switch>
         

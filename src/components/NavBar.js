@@ -16,7 +16,7 @@ const NavBar = ({currentUser}) =>
     {
       currentUser
         ? <><NavLink to={routes.YOURS} className="link" activeClassName="selected">YOURS </NavLink>
-        <NavLink to={routes.YOURS} className="link" activeClassName="selected">One v One </NavLink></>
+        <NavLink to={routes.WAITINGROOM} className="link" activeClassName="selected">One v One </NavLink></>
         
         :  undefined
     }

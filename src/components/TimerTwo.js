@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Redirect } from 'react-router-dom'
 import '../App.css';
 import * as routes from '../constants/routes'
+import firebase from './Firebase'
 
 
 class TimerTwo extends Component {
@@ -59,6 +60,14 @@ class TimerTwo extends Component {
         const { time } = this.state;
         if (this.state.outTime) {
             return <Redirect to={routes.OUTTIME}/>;
+          }
+        if (this.props.finished){
+          const db = firebase.firestore();
+          const userRef = db.collection('room').add({
+            whatTimeDidTheyFinish: time
+          }); 
+            
+            console.log('should have just sent the time')
           }
     
         return (
