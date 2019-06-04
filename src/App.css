@@ -278,7 +278,9 @@ button:active {
 .greatBackground {
   width:1600px;
   height:900px;
-  background-image: linear-gradient(to bottom right, rgba(202, 189, 189, 0.986), white);
+  background-color: rgb(241, 163, 163);
+  background-image: url('https://wallpaperstream.com/wallpapers/full/new-york-city/New-York-City-Skyline-HD-Wallpaper.jpg');
+  background-blend-mode: luminosity
 }
 
 .cell:nth-child(3n) {

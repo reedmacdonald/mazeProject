@@ -57,6 +57,7 @@ class App extends Component {
   render() {
     return (
       <div className="greatBackground">
+      <img style={{marginLeft:'25%',marginRight:'25%',float:''}} src="https://fontmeme.com/permalink/190604/b8dbec12cddbb4f54e36db974df1e811.png" alt="mr-robot-tv-show-font" border="0"/>
       
         <NavBar currentUser={this.state.currentUser}/>
         <Switch>
