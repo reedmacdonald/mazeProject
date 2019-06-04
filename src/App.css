@@ -64,12 +64,14 @@ button{
 
 .holderDiv {
   position: sticky;
-  box-shadow: 10px 10px gray;
+  background-color: white;
+  opacity:.7;
   height:530px;
   width:460px;
-  margin: 30px 30px;
+  margin: 30px auto;
   border:10px solid black;
-  border-radius: .25rem
+  border-radius: .25rem;
+
 }
 
 .switch-wrapper {
@@ -94,6 +96,7 @@ h4 {
 
 b{
   margin-top:10px;
+  margin-left:15px;
 
 }
 button:hover{
@@ -109,10 +112,12 @@ button:hover{
 
 .divHolderTwo {
   position: sticky;
-  box-shadow: 10px 10px gray;
+  background-color: white;
+  opacity: .7;
+  
   height:530px;
   width:480px;
-  margin: 30px 30px;
+  margin: 30px auto;
   border:10px solid black;
   border-radius:.25rem
 }

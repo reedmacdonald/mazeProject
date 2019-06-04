@@ -4,20 +4,25 @@
   }
 
 .navBar {
-    width:900px;
+    width:100%;
     padding-top: 10px
 }
 
 .link {
-    padding-left:30px;
-    padding-right:30px;
+    padding-left:3%;
+    padding-right:3%;
     padding-bottom: 7px;
     padding-top: 7px;
-    text-decoration: none
+    text-decoration: none;
+    -webkit-transition: background-color 1s;
+    -moz-transition:    background-color 1s;
+    -ms-transition:     background-color 1s;
+    -o-transition:      background-color 1s;
+    transition:         background-color 1s;
 }
 
 .link:hover {
-    background-color: rgb(185, 184, 184)
+    background-color: rgb(221, 219, 219)
 }
 
 .link:active{

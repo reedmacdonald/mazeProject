@@ -14,7 +14,7 @@ class TopMazes extends Component{
     
     
     getBestOf = async (e) => {
-        const bestofResponse = await fetch('/maze/all')
+        const bestofResponse = await fetch('/maze/popular')
         const parsedResponse = await bestofResponse.json();
         allMazes = parsedResponse.data
         function compare( a, b ) {
@@ -28,7 +28,7 @@ class TopMazes extends Component{
           }
           allMazes.sort(compare)
           let finalMaze=[]
-          for(let i=0;i<5;i++){
+          for(let i=0;i<allMazes.length;i++){
             finalMaze[i]=allMazes[i]
           }
         console.log(finalMaze)
@@ -48,7 +48,7 @@ class TopMazes extends Component{
 
         return(
             <div>
-            <h1>Top Mazes</h1>
+            <h1>Popular Mazes</h1>
             <br/>
             <ol>
                 {this.state.bestMazes}

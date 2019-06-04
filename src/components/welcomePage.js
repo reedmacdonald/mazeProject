@@ -53,7 +53,7 @@ that takes me one minute to solve.</b>
 <p>*Ariadne takes the pad and pen. Cobb looks at his watch.*</p>
 <br/>
 <p>
-COBB</p>
+COBB:</p>
 <b>Go.</b>
 <br/>
 <br/>
