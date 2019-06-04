@@ -19,6 +19,7 @@ import Submit from './components/Submit'
 import Pokemon from './components/Pokemon'
 import DumbNavBar from './components/DumbNavBar'
 import Contact from './components/Contact'
+import firebase from './components/Firebase'
 
 
 
@@ -40,6 +41,14 @@ class App extends Component {
       loginDisplay:'none',
       buttonDisplay: 'inline'
     })
+    const db = firebase.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
+    const userRef = db.collection('users').add({
+      username: 'Hello, Firebase!',
+      
+    }); 
   }
 
   signUp = (userName) => {
