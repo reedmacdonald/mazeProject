@@ -35,7 +35,7 @@ class TopMazes extends Component{
         this.setState({
             bestMazes:finalMaze.map((element)=>
     
-            <div><li><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><br/></div>)
+            <div><li><b><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</b></li><br/></div>)
 
         })
         return finalMaze
