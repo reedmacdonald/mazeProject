@@ -35,7 +35,7 @@ class WaitingRoom extends Component{
           }
         console.log(finalMaze)
         this.setState({
-            bestMazes:finalMaze.map((element)=>
+            bestMazes:[1].map((element)=>
     
             <div><li><NavLink onClick={()=>{this.props.setOpponent(element.owner)}} to={`${routes.LOADING}`}> GameRoom </NavLink> </li><br/></div>)
 

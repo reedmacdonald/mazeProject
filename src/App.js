@@ -24,6 +24,7 @@ import WaitingRoom from './components/WaitingRoom'
 import GameRoom from './components/GameRoom'
 import Loading from './components/Loading'
 import LoadingTwo from './components/LoadingTwo'
+import LoadingThree from './components/LoadingThree'
 import BattleRoom from './components/BattleRoom'
 import CheckWin from './components/CheckWin'
 
@@ -104,6 +105,7 @@ class App extends Component {
           <Route exact path={routes.CONTACT} render={() => <Contact/>} />
           <Route exact path={routes.LOADING} render={() => <Loading user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           <Route exact path={routes.LOADINGTWO} render={() => <LoadingTwo user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.LOADINGTHREE} render={() => <LoadingThree user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
           <Route exact path={routes.BATTLEROOM} render={() => <BattleRoom user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           

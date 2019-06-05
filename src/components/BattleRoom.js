@@ -201,7 +201,7 @@ class Test extends Component{
         return <Redirect to={routes.OUTTIME}/>;
       }
       if (this.state.dunzo) {
-        return <Redirect to={routes.CHECKWIN}/>;
+        return <Redirect to={routes.LOADINGTHREE}/>;
       }
       const db = firebase.firestore();
       db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
