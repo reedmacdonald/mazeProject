@@ -58,24 +58,32 @@ class TimerTwo extends Component {
     
       render() {
         const { time } = this.state;
+        const db = firebase.firestore();
+        const here = this
         if (this.state.outTime) {
             return <Redirect to={routes.OUTTIME}/>;
           }
         if (this.props.finished){
-          const db = firebase.firestore();
-          const userRef = db.collection('room').add({
-            whatTimeDidTheyFinish: time
-          }); 
-            
-            console.log('should have just sent the time')
-          }
-    
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+              db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                'time1': time    
+              });}
+              else{
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'time2': time    
+                  });
+                }
+              })
+            }
+          
         return (
           <div className="timer">
             <div className="timer__label">{time}</div>
           </div>
         );
       }
-    }
+      }
 
 export default withRouter(TimerTwo);

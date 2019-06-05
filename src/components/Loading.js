@@ -24,7 +24,7 @@ class Loading extends Component{
       componentDidMount(){
           setTimeout(()=>{
               this.setState({accepted:true})
-          },10000)
+          },5000)
       }
 
       render(){

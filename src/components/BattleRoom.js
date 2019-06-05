@@ -161,7 +161,7 @@ class Test extends Component{
         <button type="submit" onClick={this.attemptMaze} className="startEndButton" style = {{'fontSize':'30px'}}>Attempt Maze</button>
         </form>
         <h1 className="displayName">{this.state.name}</h1>
-        <TimerTwo bringUpTime={this.bringUpTime} finished={this.state.finished}/>
+        <TimerTwo user={this.props.user} bringUpTime={this.bringUpTime} finished={this.state.finished}/>
         </div>
         </>
         

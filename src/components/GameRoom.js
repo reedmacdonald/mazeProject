@@ -25,20 +25,44 @@ class GameRoom extends Component{
             outBounds:false,
             youWon:false,
             userName:null,
-            youSubmitted:false
+            youSubmitted:false,
+            playerNumber:null
         }
         this.maze=[]
     }
 
-    componentDidMount(){
+    /*componentWillUnmount(){
         const db = firebase.firestore();
-        db.settings({
-          timestampsInSnapshots: true
-        });
-        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').set({
-          player1: this.props.user,
-          player2: 'Hello, Reed'    
-        });    
+        if(this.state.playerNumber=='One'){
+        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+            'player1': 'Nobody is here',
+               
+          });}
+          else{
+            const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                'player2': 'Nobody is here'    
+              });}
+          }*/
+    
+
+    componentDidMount(){
+        console.log(this.props.user,'<-----this.props.user')
+        const me= this.props.user
+        console.log(me,'<---me') 
+        const db = firebase.firestore();
+        const here = this
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1=='Nobody is here') {
+            docRef.update({'player1':me})
+            here.setState({playerNumber:'One'})
+        } else if (doc.data().player2=='Nobody is here') {
+            docRef.update({'player2':me})
+            here.setState({playerNumber:'Two'})
+        }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });  
     }
 
     timeUp = () => {
@@ -104,12 +128,20 @@ class GameRoom extends Component{
     handleSubmit = async (e) => {
         e.preventDefault();
         const db = firebase.firestore();
-        const userRef = db.collection('room').add({
-          maze: this.maze,       
-        }); 
+
         this.setState({
             youSubmitted:true
         })
+        
+        if(this.state.playerNumber=='One'){
+        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+            'maze1': this.maze
+               
+          });}
+          else{
+            const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                'maze2': this.maze    
+              });}
     }
 
     hit = async () => {
