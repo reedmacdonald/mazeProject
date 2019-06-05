@@ -188,17 +188,66 @@ class Test extends Component{
 
   render(){
     if (this.state.hitWall) {
-        return <Redirect to={routes.HITWALL}/>;
+        const db = firebase.firestore();
+        const here = this
+
+
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'player1lost':true
+                })
+            }
+              else{
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'player2lost':true
+                })
+                }
+              })
+        //return <Redirect to={routes.HITWALL}/>;
       }
       if (this.state.youWon) {
         return <Redirect to={routes.YOUWON}/>;
       }
       
       if (this.state.outBounds) {
-        return <Redirect to={routes.OUTBOUNDS}/>;
+        const db = firebase.firestore();
+        const here = this
+
+
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'player1lost':true
+                })
+            }
+              else{
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'player2lost':true
+                })
+                }
+              })
+        //return <Redirect to={routes.OUTBOUNDS}/>;
       }
       if (this.state.outTime) {
-        return <Redirect to={routes.OUTTIME}/>;
+        const db = firebase.firestore();
+        const here = this
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'player1lost':true
+                })
+            }
+              else{
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'player2lost':true
+                })
+                }
+              })
+        //return <Redirect to={routes.OUTTIME}/>;
       }
       if (this.state.dunzo) {
         return <Redirect to={routes.LOADINGTHREE}/>;

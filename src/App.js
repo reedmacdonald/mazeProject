@@ -77,12 +77,36 @@ class App extends Component {
 
   }
 
+  componentWillUnmount(){
+    const here = this
+    const db = firebase.firestore();
+    var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+    docRef.get().then(function(doc) {
+        if (doc.data().player1==here.state.currentUser || doc.data().player2==here.state.currentUser){
+          db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+            'maze1': [0],
+            'maze1done':'no',
+            'maze2': [0],
+            'maze2done':'no',
+            'player1':'nobody is here',
+            'player2':'nobody is here',
+            'time1':0,
+            'time2':0
+          });}
+
+          })
+  }
+
   render() {
     return (
       <div className="greatBackground">
       <img style={{marginLeft:'25%',marginRight:'25%',float:''}} src="https://fontmeme.com/permalink/190604/b8dbec12cddbb4f54e36db974df1e811.png" alt="mr-robot-tv-show-font" border="0"/>
       
         <NavBar currentUser={this.state.currentUser}/>
+        {!this.state.currentUser?
+        <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>
+        :
+        
         <Switch>
           <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
           <Route exact path={routes.BEST} render={() => <TopMazes/>} />
@@ -111,7 +135,7 @@ class App extends Component {
           
           <Route render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
         </Switch>
-        
+        }
       </div>
       
     );

@@ -48,7 +48,9 @@ class CheckWin extends Component{
             'maze1':[0],
             'maze2':[0],
             'maze1done':'no',
-            'maze2done':'no'
+            'maze2done':'no',
+            'player1lose':false,
+            'player2lose':false
           });}
 
           }

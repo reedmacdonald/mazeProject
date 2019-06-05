@@ -12,14 +12,11 @@ const NavBar = ({currentUser}) =>
     <NavLink to={routes.ALL} className="link" activeClassName="selected">ALL </NavLink>
     <NavLink to={routes.MAZES} className="link" activeClassName="selected">CREATE </NavLink>
     <NavLink to={routes.CONTACT} className="link" activeClassName="selected">CONTACT </NavLink>
-    
-    {
-      currentUser
-        ? <><NavLink to={routes.YOURS} className="link" activeClassName="selected">YOURS </NavLink>
-        <NavLink to={routes.WAITINGROOM} className="link" activeClassName="selected">One v One </NavLink></>
+    <NavLink to={routes.YOURS} className="link" activeClassName="selected">YOURS </NavLink>
+    <NavLink to={routes.WAITINGROOM} className="link" activeClassName="selected">One v One </NavLink>
         
-        :  undefined
-    }
+        
+    
   </div>
 
 export default NavBar

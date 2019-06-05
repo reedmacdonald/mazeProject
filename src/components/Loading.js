@@ -19,13 +19,34 @@ class Loading extends Component{
           colorToChange:null,
           changeColor: false,
           clicked:this.props.clicked,
-          accepted:false
+          accepted:false,
+          theyLeft:false
         };
       }
       componentDidMount(){
-          const here = this
+        const here = this
         const db = firebase.firestore();
         const me= this.props.user
+        setTimeout(()=>{
+            var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+            docRef.get().then(function(doc) {
+                if (2>1) {
+                docRef.update({                  
+                'player1':'nobody is here',
+                'player2':'nobody is here',
+                'maze1':[0],
+                'maze2':[0],
+                'maze1done':'no',
+                'maze2done':'no',
+                'player1lost':false,
+                'player2lost':false})
+                
+            }
+            }
+            )
+            this.setState({theyLeft:true})
+        },8000)
+ 
 
         var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
         docRef.get().then(function(doc) {
@@ -54,15 +75,21 @@ class Loading extends Component{
       }
 
       render(){
+
         if (this.state.accepted) {
             return <Redirect to={routes.GAMEROOM}/>;
           }
+          if (this.state.theyLeft) {
+              console.log('hes not coming')
+            return <Redirect to={routes.WELCOME}/>;
+          }
+
           return(
 <div className="divHolderTwo">
 
 <h1>One on One</h1>
 <br/>
-<h3>Waiting for {this.props.opponent} to accept challenge</h3>
+<h3>Waiting for another player</h3>
 <ul className="instructionList">
     <li>You will have three minutes to make the maze again</li>
     <li>Take all the time if you'd like</li>
@@ -74,7 +101,7 @@ class Loading extends Component{
     <li>.</li>
 </ul>
 <br/>
-<h3>Waiting for {this.props.opponent} still</h3>
+<h3>Waiting for another player still</h3>
 <ul className="instructionList">
     <li>.</li>
     <li>.</li>
