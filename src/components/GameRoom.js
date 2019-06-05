@@ -51,7 +51,7 @@ class GameRoom extends Component{
         console.log(me,'<---me') 
         const db = firebase.firestore();
         const here = this
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        /*var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
         docRef.get().then(function(doc) {
             if (doc.data().player1=='Nobody is here') {
             docRef.update({'player1':me})
@@ -62,7 +62,11 @@ class GameRoom extends Component{
         }
         }).catch(function(error) {
             console.log("Error getting document:", error);
-        });  
+        });  */
+        db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
+            .onSnapshot(function(doc) {
+                console.log("Current data game room: ", doc.data());
+                });
     }
 
     timeUp = () => {
@@ -128,20 +132,39 @@ class GameRoom extends Component{
     handleSubmit = async (e) => {
         e.preventDefault();
         const db = firebase.firestore();
+        const here = this
 
         this.setState({
             youSubmitted:true
         })
+        let playaOne
         
-        if(this.state.playerNumber=='One'){
-        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
-            'maze1': this.maze
+        
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+              db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                'maze1': here.maze,
+                'maze1done':'yes'  
+              });}
+              else{
+                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                    'maze2': here.maze,
+                    'maze2done':'yes'   
+                  });
+                }
+              })
+        
+        /*const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+            'maze1': this.maze,
+            'maze1done':'yes'
                
           });}
           else{
             const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
-                'maze2': this.maze    
-              });}
+                'maze2': this.maze,
+                'maze2done':'yes' 
+              });}*/
     }
 
     hit = async () => {

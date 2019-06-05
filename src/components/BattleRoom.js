@@ -36,7 +36,52 @@ class Test extends Component{
     
 
     getMaze = async (e) => {
-        const mazeResponse = await fetch(`/maze/test/5cdd9617ef33ce47046561ab`)
+        const db = firebase.firestore();
+        const here = this
+
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+                let newMaze = doc.data().maze2;
+                const bigArray = new Array(6400).fill(0)
+                for (let i=0;i<newMaze.length;i++){
+                  bigArray[newMaze[i]]=1;
+              
+                }
+                here.setState({
+                    name:'idc about this',
+                    maze:
+                    bigArray.map((element)=>{
+                    return <div><Square hit ={here.hit} testing={here.state.testing} className="cell" color={element=="1"?'black':null} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
+                }
+                )
+            })
+}
+              else{
+                  let newMaze = doc.data().maze1;
+                  const bigArray = new Array(6400).fill(0)
+                  for (let i=0;i<newMaze.length;i++){
+                    bigArray[newMaze[i]]=1;
+                
+                  }
+                  here.setState({
+                      name:'idc about this',
+                      maze:
+                      bigArray.map((element)=>{
+                      return <div><Square hit ={here.hit} testing={here.state.testing} className="cell" color={element=="1"?'black':null} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
+                  }
+                  )
+              })
+                
+                }
+              })
+
+
+
+
+
+
+        /*const mazeResponse = await fetch(`/maze/test/5cdd9617ef33ce47046561ab`)
         const parsedResponse = await mazeResponse.json();
         testMaze = parsedResponse.data.maze;
         testName = parsedResponse.data.name
@@ -47,7 +92,7 @@ class Test extends Component{
             return <div><Square hit ={this.hit} testing={this.state.testing} className="cell" color={element=="1"?'black':null} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
         }
         )
-    })
+    })*/
 
     }
 
@@ -120,6 +165,22 @@ class Test extends Component{
         
     }
 
+    /*componentWillUnmount(){
+        const db = firebase.firestore();
+        if(2>1){
+        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+            'player1': 'nobody is here',
+            'player2': 'nobody is here',
+            'time1':0,
+            'time2':0,
+            'maze1':[0],
+            'maze2':[0],
+            'maze1done':'no',
+            'maze2done':'no'
+          });}
+
+          }*/
+
     didntStart = (e) => {
         e.preventDefault();
     }
@@ -142,6 +203,11 @@ class Test extends Component{
       if (this.state.dunzo) {
         return <Redirect to={routes.CHECKWIN}/>;
       }
+      const db = firebase.firestore();
+      db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
+      .onSnapshot(function(doc) {
+          console.log("Current data battle room: ", doc.data());
+          });
 
 
 

@@ -5,6 +5,7 @@ import Maze from './Maze';
 import TimerTwo from './TimerTwo'
 import * as routes from '../constants/routes'
 import { NavLink } from 'react-router-dom';
+import firebase from './Firebase'
 
 
 
@@ -22,9 +23,34 @@ class Loading extends Component{
         };
       }
       componentDidMount(){
-          setTimeout(()=>{
-              this.setState({accepted:true})
-          },5000)
+          const here = this
+        const db = firebase.firestore();
+        const me= this.props.user
+
+        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        docRef.get().then(function(doc) {
+            if (doc.data().player1=='nobody is here') {
+            docRef.update({'player1':me})
+            here.setState({playerNumber:'One'})
+        } else if (doc.data().player2=='nobody is here') {
+            docRef.update({'player2':me})
+            here.setState({playerNumber:'Two'})
+        }
+        }
+        )
+
+        db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
+            .onSnapshot(function(doc) {
+                if (doc.data().player1 != 'nobody is here' && doc.data().player2 != 'nobody is here'){
+                    here.setState({accepted:true})
+                }
+                
+                
+                
+                
+                
+                ;
+                });
       }
 
       render(){

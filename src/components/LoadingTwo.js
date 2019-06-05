@@ -5,6 +5,7 @@ import Maze from './Maze';
 import TimerTwo from './TimerTwo'
 import * as routes from '../constants/routes'
 import { NavLink } from 'react-router-dom';
+import firebase from './Firebase'
 
 
 
@@ -22,9 +23,24 @@ class LoadingTwo extends Component{
         };
       }
       componentDidMount(){
-          setTimeout(()=>{
-              this.setState({accepted:true})
-          },10000)
+        const here = this
+        const db = firebase.firestore();
+        const me= this.props.user
+
+
+
+        db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
+            .onSnapshot(function(doc) {
+                if (doc.data().maze1done =='yes' && doc.data().maze2done == 'yes'){
+                    here.setState({accepted:true})
+                }
+                
+                
+                
+                
+                
+                
+                });
       }
 
       render(){

@@ -102,8 +102,8 @@ class App extends Component {
           <Route exact path={routes.INSTRUCTIONS} render={() => <Instructions/>} />
           <Route exact path={routes.POKEMON} render={() => <Pokemon/>} />
           <Route exact path={routes.CONTACT} render={() => <Contact/>} />
-          <Route exact path={routes.LOADING} render={() => <Loading opponent={this.state.currentOpponent}/>} />
-          <Route exact path={routes.LOADINGTWO} render={() => <LoadingTwo opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.LOADING} render={() => <Loading user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.LOADINGTWO} render={() => <LoadingTwo user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
           <Route exact path={routes.BATTLEROOM} render={() => <BattleRoom user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           
