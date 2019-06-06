@@ -81,43 +81,18 @@ class Test extends Component{
 
 
 
-        /*const mazeResponse = await fetch(`/maze/test/5cdd9617ef33ce47046561ab`)
-        const parsedResponse = await mazeResponse.json();
-        testMaze = parsedResponse.data.maze;
-        testName = parsedResponse.data.name
-        this.setState({
-            name:testName,
-            maze:
-            testMaze.map((element)=>{
-            return <div><Square hit ={this.hit} testing={this.state.testing} className="cell" color={element=="1"?'black':null} style={{'height':'5px','width':'5px','backgroundColor':element==1?'black':'white','margin':0}}></Square></div>
-        }
-        )
-    })*/
+
 
     }
 
     youLost = async () => {
-        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
-            method: 'PUT',
-            credentials: 'include',
-            headers:{
-                "Content-type" : 'application/json'
-            }
-        })
-        const parsedResponse = await loser.json();
-        console.log(parsedResponse)
+
+        console.log('nuthin')
     }
 
     outOfBounds = async () =>{
-        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
-            method: 'PUT',
-            credentials: 'include',
-            headers:{
-                "Content-type" : 'application/json'
-            }
-        })
-        const parsedResponse = await loser.json();
-        console.log(parsedResponse)
+
+        
         this.setState({
             outBounds:true
         })
@@ -137,14 +112,8 @@ class Test extends Component{
     }
 
     hit = async () => {
-        const loser = await fetch(`/maze/test/loser/${this.props.match.params.testId}`, {
-            method: 'PUT',
-            credentials: 'include',
-            headers:{
-                "Content-type" : 'application/json'
-            }
-        })
-        const parsedResponse = await loser.json();
+
+        
         this.setState({
             hitWall:true
         })
@@ -192,15 +161,15 @@ class Test extends Component{
         const here = this
 
 
-        var docRef = db.collection('room').doc(here.props.location);
+        var docRef = db.collection('room').doc(here.props.loco);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-                db.collection('room').doc(here.props.location).update({
+                db.collection('room').doc(here.props.loco).update({
                     'player1lost':true
                 })
             }
               else{
-                db.collection('room').doc(here.props.location).update({
+                db.collection('room').doc(here.props.loco).update({
                     'player2lost':true
                 })
                 }
@@ -216,15 +185,15 @@ class Test extends Component{
         const here = this
 
 
-        var docRef = db.collection('room').doc(here.props.location);
+        var docRef = db.collection('room').doc(here.props.loco);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-                db.collection('room').doc(here.props.location).update({
+                db.collection('room').doc(here.props.loco).update({
                     'player1lost':true
                 })
             }
               else{
-                db.collection('room').doc(here.props.location).update({
+                db.collection('room').doc(here.props.loco).update({
                     'player2lost':true
                 })
                 }
@@ -234,15 +203,15 @@ class Test extends Component{
       if (this.state.outTime) {
         const db = firebase.firestore();
         const here = this
-        var docRef = db.collection('room').doc(here.props.location);
+        var docRef = db.collection('room').doc(here.props.loco);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-                db.collection('room').doc(here.props.location).update({
+                db.collection('room').doc(here.props.loco).update({
                     'player1lost':true
                 })
             }
               else{
-                db.collection('room').doc(here.props.location).update({
+                db.collection('room').doc(here.props.loco).update({
                     'player2lost':true
                 })
                 }

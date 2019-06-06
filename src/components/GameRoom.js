@@ -32,19 +32,6 @@ class GameRoom extends Component{
         this.maze=[]
     }
 
-    /*componentWillUnmount(){
-        const db = firebase.firestore();
-        if(this.state.playerNumber=='One'){
-        const userRef = db.collection('room').doc(here.props.location).update({
-            'player1': 'Nobody is here',
-               
-          });}
-          else{
-            const userRef = db.collection('room').doc(here.props.location).update({
-                'player2': 'Nobody is here'    
-              });}
-          }*/
-    
 
     componentDidMount(){
         console.log(this.props.user,'<-----this.props.user')
@@ -156,16 +143,7 @@ class GameRoom extends Component{
                 }
               })
         
-        /*const userRef = db.collection('room').doc(here.props.location).update({
-            'maze1': this.maze,
-            'maze1done':'yes'
-               
-          });}
-          else{
-            const userRef = db.collection('room').doc(here.props.location).update({
-                'maze2': this.maze,
-                'maze2done':'yes' 
-              });}*/
+
     }
 
     hit = async () => {

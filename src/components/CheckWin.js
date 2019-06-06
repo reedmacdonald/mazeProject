@@ -53,7 +53,8 @@ class CheckWin extends Component{
             'maze1done':'no',
             'maze2done':'no',
             'player1lost':false,
-            'player2lost':false
+            'player2lost':false,
+            'full':false
           });}
 
           }
@@ -88,13 +89,14 @@ class CheckWin extends Component{
         
           return(
 <div class="divHolderTwo">
-<h1>{this.state.player1Name} time: {60-this.state.player1Score}</h1>
-<h1>{this.state.player2Name} time: {60-this.state.player2Score}</h1>
+<h1>{this.state.player1Name}'s time: {60-this.state.player1Score}</h1>
+<h1>{this.state.player2Name}'s time: {60-this.state.player2Score}</h1>
 {this.state.player1Score>this.state.player2Score?<h1>{this.state.player1Name} Wins!</h1>:<h1>{this.state.player2Name} Wins!</h1>}
 <br/>
 <br/>
-<h1>Player 1 Lost? {this.state.player1lost}</h1>
-<h1>Player2 Lost? {this.state.player2lost}</h1>
+
+{this.state.player1Score>this.state.player2Score && this.state.player1lost=='true'?<h2> {this.state.player1Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, actually, not sure why we ever said they did </h2>:undefined}
+{this.state.player2Score>this.state.player1Score && this.state.player2lost=='true'?<h2>{this.state.player2Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, actually, not sure why we ever said they did</h2>:undefined}
  
 </div>
           )
