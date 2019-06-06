@@ -101,8 +101,8 @@ class CheckWin extends Component{
 <br/>
 <br/>
 
-{this.state.player1Score>this.state.player2Score && this.state.player1lost=='true'?<h2> {this.state.player1Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, actually, not sure why we ever said they did </h2>:undefined}
-{this.state.player2Score>this.state.player1Score && this.state.player2lost=='true'?<h2>{this.state.player2Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, actually, not sure why we ever said they did</h2>:undefined}
+{this.state.player1Score>this.state.player2Score && this.state.player1lost=='true'?<h2> {this.state.player1Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, not sure why I ever said they did </h2>:undefined}
+{this.state.player2Score>this.state.player1Score && this.state.player2lost=='true'?<h2>{this.state.player2Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, not sure why I ever said they did</h2>:undefined}
  
 </div>
           )
