@@ -34,6 +34,8 @@ class Contact extends Component{
     <br/>
     <li><a href = "https://github.com/reedmacdonald">https://github.com/reedmacdonald</a></li>
     <br/>
+    <li><a href = "https://reedmacdonald.com">https://reedmacdonald.com</a></li>
+    <br/>
     <li>reedpmacdonald@gmail.com</li>
     <br/>
     <li>General Assembly, Software Engineering Immersive - Spring 2019 Cohort</li>

@@ -58,32 +58,38 @@ class CheckWin extends Component{
           });}
 
           }
+          componentDidMount(){
+            const db = firebase.firestore();
+            const here = this
+
+            var docRef = db.collection('room').doc(here.props.location);
+            docRef.get().then(function(doc) {
+                if (doc.data().player1==here.props.user){
+                        here.setState({player1Score:doc.data().time1,
+                            player2Score:doc.data().time2,
+                        player1Name:doc.data().player1,
+                    player2Name:doc.data().player2,
+                  player2lost:doc.data().player2lost.toString(),
+                  player1lost:doc.data().player1lost.toString()});}
+                  else{
+                    here.setState({player2Score:doc.data().time2,
+                        player1Score:doc.data().time1,
+                        player1Name:doc.data().player1,
+                        player2Name:doc.data().player2,
+                        player2lost:doc.data().player2lost.toString(),
+                        player1lost:doc.data().player1lost.toString()});
+    
+                    }
+                  })
+
+          }
           
 
       render(){
-        const db = firebase.firestore();
-        const here = this
 
 
-        var docRef = db.collection('room').doc(here.props.location);
-        docRef.get().then(function(doc) {
-            if (doc.data().player1==here.props.user){
-                    here.setState({player1Score:doc.data().time1,
-                        player2Score:doc.data().time2,
-                    player1Name:doc.data().player1,
-                player2Name:doc.data().player2,
-              player2lost:doc.data().player2lost.toString(),
-              player1lost:doc.data().player1lost.toString()});}
-              else{
-                here.setState({player2Score:doc.data().time2,
-                    player1Score:doc.data().time1,
-                    player1Name:doc.data().player1,
-                    player2Name:doc.data().player2,
-                    player2lost:doc.data().player2lost.toString(),
-                    player1lost:doc.data().player1lost.toString()});
 
-                }
-              })
+
 
                 
         
