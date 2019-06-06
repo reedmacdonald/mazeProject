@@ -7,6 +7,8 @@ import * as routes from '../constants/routes'
 import { NavLink } from 'react-router-dom';
 import firebase from './Firebase'
 
+let timer
+
 
 
 
@@ -23,13 +25,16 @@ class LoadingTwo extends Component{
           theyLeft:false
         };
       }
+      componentWillUnmount(){
+        timer=clearTimeout()
+      }
       componentDidMount(){
         const here = this
         const db = firebase.firestore();
         
         const me= this.props.user
-        setTimeout(()=>{
-            var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        timer = setTimeout(()=>{
+            var docRef = db.collection('room').doc(here.props.location);
             docRef.get().then(function(doc) {
                 if (2>1) {
                 docRef.update({
@@ -40,17 +45,19 @@ class LoadingTwo extends Component{
                 'maze1done':'no',
                 'maze2done':'no',
                 'player1lost':false,
-                'player2lost':false})
+                'player2lost':false,
+              'full':false})
                 
             }
             }
             )
+            console.log('heeeeeellllllloooooo from the second loading page')
             this.setState({theyLeft:true})
-        },200000)
+        },300000)
 
 
 
-        db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
+        db.collection('room').doc(here.props.location)
             .onSnapshot(function(doc) {
                 if (doc.data().maze1done =='yes' && doc.data().maze2done == 'yes'){
                     here.setState({accepted:true})
@@ -70,7 +77,7 @@ class LoadingTwo extends Component{
           }
           if (this.state.theyLeft) {
             console.log('hes not coming')
-          return <Redirect to={routes.WELCOME}/>;
+          return <Redirect to={routes.HELEFT}/>;
         }
           return(
 <div className="divHolderTwo">

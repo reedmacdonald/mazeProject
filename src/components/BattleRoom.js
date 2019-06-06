@@ -39,7 +39,7 @@ class Test extends Component{
         const db = firebase.firestore();
         const here = this
 
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.loco);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
                 let newMaze = doc.data().maze2;
@@ -168,7 +168,7 @@ class Test extends Component{
     /*componentWillUnmount(){
         const db = firebase.firestore();
         if(2>1){
-        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+        const userRef = db.collection('room').doc(here.props.location).update({
             'player1': 'nobody is here',
             'player2': 'nobody is here',
             'time1':0,
@@ -192,15 +192,15 @@ class Test extends Component{
         const here = this
 
 
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.location);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.location).update({
                     'player1lost':true
                 })
             }
               else{
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.location).update({
                     'player2lost':true
                 })
                 }
@@ -216,15 +216,15 @@ class Test extends Component{
         const here = this
 
 
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.location);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.location).update({
                     'player1lost':true
                 })
             }
               else{
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.location).update({
                     'player2lost':true
                 })
                 }
@@ -234,15 +234,15 @@ class Test extends Component{
       if (this.state.outTime) {
         const db = firebase.firestore();
         const here = this
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.location);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.location).update({
                     'player1lost':true
                 })
             }
               else{
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.location).update({
                     'player2lost':true
                 })
                 }
@@ -252,8 +252,13 @@ class Test extends Component{
       if (this.state.dunzo) {
         return <Redirect to={routes.LOADINGTHREE}/>;
       }
+      const here = this
       const db = firebase.firestore();
-      db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
+      console.log(here,'<---here')
+      console.log(this,'<---this')
+      console.log(here.props.location,'<----here.props')
+      console.log(this.props.location,'<----this.props')
+      db.collection('room').doc(here.props.loco)
       .onSnapshot(function(doc) {
           console.log("Current data battle room: ", doc.data());
           });
@@ -276,7 +281,7 @@ class Test extends Component{
         <button type="submit" onClick={this.attemptMaze} className="startEndButton" style = {{'fontSize':'30px'}}>Attempt Maze</button>
         </form>
         <h1 className="displayName">{this.state.name}</h1>
-        <TimerTwo user={this.props.user} bringUpTime={this.bringUpTime} finished={this.state.finished}/>
+        <TimerTwo loco={this.props.loco} user={this.props.user} bringUpTime={this.bringUpTime} finished={this.state.finished}/>
         </div>
         </>
         

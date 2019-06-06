@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import * as routes from '../constants/routes';
+import firebase from './Firebase'
 let allMazes
 
 class WaitingRoom extends Component{
@@ -11,36 +12,44 @@ class WaitingRoom extends Component{
             
         }
     }
+    clearRoom=(element)=>{
+        console.log(element)
+        const db = firebase.firestore();
+        const here = this
+
+
+        
+        
+        var docRef = db.collection('room').doc(`gameRoom${element}`);
+        docRef.get().then(function(doc) {
+
+              db.collection('room').doc(`gameRoom${element}`).update({
+                'player1':'nobody is here',
+                'player2':'nobody is here',
+                'maze1':[0],
+                'maze2':[0],
+                'maze1done':'no',
+                'maze2done':'no',
+                'player1lost':false,
+                'player2lost':false,
+                'full':false 
+              });
+
+              })
+    }
     
     
     getBestOf = async (e) => {
-        const bestofResponse = await fetch('/maze/all')
-        const parsedResponse = await bestofResponse.json();
-        allMazes = parsedResponse.data
-        function compare( a, b ) {
-            if ( a.name < b.name ){
-              return -1;
-            }
-            if ( a.name > b.name ){
-              return 1;
-            }
-            return 0;
-          }
-          allMazes.sort(compare)
-          let finalMaze=[]
-          for(let i=0;i<allMazes.length;i++){
-              if(allMazes[i].name != "" && allMazes[i].owner != ""){
-            finalMaze[i]=allMazes[i]
-        }
-          }
-        console.log(finalMaze)
+
+ 
+        
         this.setState({
-            bestMazes:[1].map((element)=>
+            bestMazes:[1,2].map((element, index)=>
     
-            <div><li><NavLink onClick={()=>{this.props.setOpponent(element.owner)}} to={`${routes.LOADING}`}> GameRoom </NavLink> </li><br/></div>)
+            <div><li><NavLink onClick={()=>{this.props.sendLocation(`gameRoom${element}`)}} to={`${routes.LOADING}`}> GameRoom {element}</NavLink> </li><br/><button onClick={()=>{this.clearRoom(element)}}>clear room</button></div>)
 
         })
-        return finalMaze
+        
     }
 
     componentDidMount(){

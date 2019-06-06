@@ -23,7 +23,9 @@ class CheckWin extends Component{
           player1Score:0,
           player2Score:0,
           player1Name:'idk',
-          player2Name:'idk'
+          player2Name:'idk',
+          player1lost:'idk',
+          player2lost:'idk'
         };
       }
       pushLoginUp = (e) => {
@@ -40,7 +42,8 @@ class CheckWin extends Component{
       componentWillUnmount(){
         const db = firebase.firestore();
         if(2>1){
-        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+          const here=this
+        const userRef = db.collection('room').doc(here.props.location).update({
             'player1': 'nobody is here',
             'player2': 'nobody is here',
             'time1':0,
@@ -49,8 +52,8 @@ class CheckWin extends Component{
             'maze2':[0],
             'maze1done':'no',
             'maze2done':'no',
-            'player1lose':false,
-            'player2lose':false
+            'player1lost':false,
+            'player2lost':false
           });}
 
           }
@@ -61,25 +64,26 @@ class CheckWin extends Component{
         const here = this
 
 
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.location);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
                     here.setState({player1Score:doc.data().time1,
                         player2Score:doc.data().time2,
                     player1Name:doc.data().player1,
-                player2Name:doc.data().player2});}
+                player2Name:doc.data().player2,
+              player2lost:doc.data().player2lost.toString(),
+              player1lost:doc.data().player1lost.toString()});}
               else{
                 here.setState({player2Score:doc.data().time2,
                     player1Score:doc.data().time1,
                     player1Name:doc.data().player1,
-                    player2Name:doc.data().player2});
+                    player2Name:doc.data().player2,
+                    player2lost:doc.data().player2lost.toString(),
+                    player1lost:doc.data().player1lost.toString()});
 
                 }
               })
-        /*db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
-            .onSnapshot(function(doc) {
-                
-                    here.setState({accepted:true})*/
+
                 
         
           return(
@@ -89,6 +93,8 @@ class CheckWin extends Component{
 {this.state.player1Score>this.state.player2Score?<h1>{this.state.player1Name} Wins!</h1>:<h1>{this.state.player2Name} Wins!</h1>}
 <br/>
 <br/>
+<h1>Player 1 Lost? {this.state.player1lost}</h1>
+<h1>Player2 Lost? {this.state.player2lost}</h1>
  
 </div>
           )

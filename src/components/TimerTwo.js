@@ -64,14 +64,14 @@ class TimerTwo extends Component {
             return <Redirect to={routes.OUTTIME}/>;
           }
         if (this.props.finished){
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.loco);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-              db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+              db.collection('room').doc(here.props.loco).update({
                 'time1': time    
               });}
               else{
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.loco).update({
                     'time2': time    
                   });
                 }

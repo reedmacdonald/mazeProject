@@ -27,6 +27,8 @@ import LoadingTwo from './components/LoadingTwo'
 import LoadingThree from './components/LoadingThree'
 import BattleRoom from './components/BattleRoom'
 import CheckWin from './components/CheckWin'
+import NobodyComing from './components/NobodyComing'
+import HeLeft from './components/HeLeft'
 
 
 
@@ -39,7 +41,13 @@ class App extends Component {
     currentUser: null,
     loginDisplay: 'inline',
     buttonDisplay: 'none',
-    currentOpponent: null
+    currentOpponent: null,
+    location:'gameRoom1',
+  }
+  sendLocation = (location) => {
+    this.setState({
+      location
+    })
   }
 
   setOpponent = (opponent) => {
@@ -80,10 +88,10 @@ class App extends Component {
   componentWillUnmount(){
     const here = this
     const db = firebase.firestore();
-    var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+    var docRef = db.collection('room').doc(here.props.location);
     docRef.get().then(function(doc) {
         if (doc.data().player1==here.state.currentUser || doc.data().player2==here.state.currentUser){
-          db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+          db.collection('room').doc(here.props.location).update({
             'maze1': [0],
             'maze1done':'no',
             'maze2': [0],
@@ -108,9 +116,11 @@ class App extends Component {
         :
         
         <Switch>
+          <Route exact path={routes.HELEFT} render={() => <HeLeft/>} />
+          <Route exact path={routes.NOBODYCOMING} render={() => <NobodyComing/>} />
           <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
           <Route exact path={routes.BEST} render={() => <TopMazes/>} />
-          <Route exact path={routes.CHECKWIN} render={() => <CheckWin/>} />
+          <Route exact path={routes.CHECKWIN} render={() => <CheckWin location={this.state.location} sendLocation={this.sendLocation}/>} />
           <Route exact path={routes.MAZES} render={() => <Maze userName={this.state.currentUser}/>} />
           <Route exact path={routes.WELCOME} render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
           <Route exact path={`${routes.USERS}/:id`} render={() => <ShowUser />} />
@@ -121,17 +131,17 @@ class App extends Component {
           <Route exact path={routes.OUTTIME} render={() => <OutTime/>} />
           <Route exact path={routes.HITWALL} render={() => <HitWall/>} />
           <Route exact path={routes.ALL} render={() => <AllMazes/>} />
-          <Route exact path={routes.WAITINGROOM} render={() => <WaitingRoom setOpponent={this.setOpponent}/>} />
-          <Route exact path={routes.GAMEROOM} render={() => <GameRoom user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.WAITINGROOM} render={() => <WaitingRoom location={this.state.location} sendLocation={this.sendLocation} setOpponent={this.setOpponent}/>} />
+          <Route exact path={routes.GAMEROOM} render={() => <GameRoom location={this.state.location} sendLocation={this.sendLocation} user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           <Route exact path={routes.SUBMIT} render={() => <Submit/>} />
           <Route exact path={routes.INSTRUCTIONS} render={() => <Instructions/>} />
           <Route exact path={routes.POKEMON} render={() => <Pokemon/>} />
           <Route exact path={routes.CONTACT} render={() => <Contact/>} />
-          <Route exact path={routes.LOADING} render={() => <Loading user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
-          <Route exact path={routes.LOADINGTWO} render={() => <LoadingTwo user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
-          <Route exact path={routes.LOADINGTHREE} render={() => <LoadingThree user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.LOADING} render={() => <Loading location={this.state.location} sendLocation={this.sendLocation} user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.LOADINGTWO} render={() => <LoadingTwo location={this.state.location} sendLocation={this.sendLocation} user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.LOADINGTHREE} render={() => <LoadingThree location={this.state.location} sendLocation={this.sendLocation} user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           <Route exact path={routes.YOURS} render={() => <Yours userName={this.state.currentUser}/>} />
-          <Route exact path={routes.BATTLEROOM} render={() => <BattleRoom user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
+          <Route exact path={routes.BATTLEROOM} render={() => <BattleRoom loco={this.state.location} sendLocation={this.sendLocation} user={this.state.currentUser} opponent={this.state.currentOpponent}/>} />
           
           <Route render={() => <WelcomePage buttonDisplay={this.state.buttonDisplay} login={this.login} signUp={this.signUp} loginDisplay={this.state.loginDisplay}/>} />
         </Switch>

@@ -26,7 +26,8 @@ class GameRoom extends Component{
             youWon:false,
             userName:null,
             youSubmitted:false,
-            playerNumber:null
+            playerNumber:null,
+            opponent:'some Rando'
         }
         this.maze=[]
     }
@@ -34,12 +35,12 @@ class GameRoom extends Component{
     /*componentWillUnmount(){
         const db = firebase.firestore();
         if(this.state.playerNumber=='One'){
-        const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+        const userRef = db.collection('room').doc(here.props.location).update({
             'player1': 'Nobody is here',
                
           });}
           else{
-            const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+            const userRef = db.collection('room').doc(here.props.location).update({
                 'player2': 'Nobody is here'    
               });}
           }*/
@@ -51,19 +52,19 @@ class GameRoom extends Component{
         console.log(me,'<---me') 
         const db = firebase.firestore();
         const here = this
-        /*var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.location);
         docRef.get().then(function(doc) {
-            if (doc.data().player1=='Nobody is here') {
-            docRef.update({'player1':me})
-            here.setState({playerNumber:'One'})
-        } else if (doc.data().player2=='Nobody is here') {
-            docRef.update({'player2':me})
-            here.setState({playerNumber:'Two'})
+            if (doc.data().player1==me) {
+            
+            here.setState({opponent:doc.data().player2})
+        } else {
+            
+            here.setState({opponent:doc.data().player1})
         }
         }).catch(function(error) {
             console.log("Error getting document:", error);
-        });  */
-        db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd')
+        });  
+        db.collection('room').doc(here.props.location)
             .onSnapshot(function(doc) {
                 console.log("Current data game room: ", doc.data());
                 });
@@ -140,28 +141,28 @@ class GameRoom extends Component{
         let playaOne
         
         
-        var docRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd');
+        var docRef = db.collection('room').doc(here.props.location);
         docRef.get().then(function(doc) {
             if (doc.data().player1==here.props.user){
-              db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+              db.collection('room').doc(here.props.location).update({
                 'maze1': here.maze,
                 'maze1done':'yes'  
               });}
               else{
-                db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+                db.collection('room').doc(here.props.location).update({
                     'maze2': here.maze,
                     'maze2done':'yes'   
                   });
                 }
               })
         
-        /*const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+        /*const userRef = db.collection('room').doc(here.props.location).update({
             'maze1': this.maze,
             'maze1done':'yes'
                
           });}
           else{
-            const userRef = db.collection('room').doc('wd8cJ5QOgRc8v5W0F4wd').update({
+            const userRef = db.collection('room').doc(here.props.location).update({
                 'maze2': this.maze,
                 'maze2done':'yes' 
               });}*/
@@ -188,18 +189,67 @@ class GameRoom extends Component{
         return <Redirect to={routes.LOADINGTWO}/>;
       }
 
-    if (this.state.hitWall) {
-        return <Redirect to={routes.HITWALL}/>;
+      if (this.state.hitWall) {
+        const db = firebase.firestore();
+        const here = this
+
+
+        var docRef = db.collection('room').doc(here.props.location);
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+                db.collection('room').doc(here.props.location).update({
+                    'player1lost':true
+                })
+            }
+              else{
+                db.collection('room').doc(here.props.location).update({
+                    'player2lost':true
+                })
+                }
+              })
+        
       }
       if (this.state.youWon) {
         return <Redirect to={routes.SUBMIT}/>;
       }
       
       if (this.state.outBounds) {
-        return <Redirect to={routes.OUTBOUNDS}/>;
+        const db = firebase.firestore();
+        const here = this
+
+
+        var docRef = db.collection('room').doc(here.props.location);
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+                db.collection('room').doc(here.props.location).update({
+                    'player1lost':true
+                })
+            }
+              else{
+                db.collection('room').doc(here.props.location).update({
+                    'player2lost':true
+                })
+                }
+              })
+        //return <Redirect to={routes.OUTBOUNDS}/>;
       }
       if (this.state.outTime) {
-        return <Redirect to={routes.OUTTIME}/>;
+        const db = firebase.firestore();
+        const here = this
+        var docRef = db.collection('room').doc(here.props.location);
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+                db.collection('room').doc(here.props.location).update({
+                    'player1lost':true
+                })
+            }
+              else{
+                db.collection('room').doc(here.props.location).update({
+                    'player2lost':true
+                })
+                }
+              })
+        //return <Redirect to={routes.OUTTIME}/>;
       }
 
   
@@ -211,7 +261,7 @@ class GameRoom extends Component{
       })
       return (
           <div>
-              <h1>You are making a maze for {this.props.opponent}</h1>
+              <h1 style={{marginLeft:'30%'}}>You are making a maze for {this.state.opponent}</h1>
       <div className="holderDiv" onDoubleClick={this.changeToClicked}> 
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
