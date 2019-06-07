@@ -23,7 +23,8 @@ class Test extends Component{
             youWon:false,
             finished:false,
             endTime:null,
-            dunzo:false
+            dunzo:false,
+            theyLeft:false
 
         }
     }
@@ -133,6 +134,48 @@ class Test extends Component{
 
         
     }
+    componentWillUnmount(){
+        const db = firebase.firestore();
+        const here = this
+
+        if(!this.state.dunzo){
+            console.log('wait, youre just going to leave the battle room?')
+            var docRef = db.collection('room').doc(here.props.loco);
+            docRef.get().then(function(doc) {
+                if (doc.data().player1==here.props.user){
+                  db.collection('room').doc(here.props.loco).update({
+                    'player1': 'nobody is here',
+                    'player2': 'nobody is here',
+                    'time1':0,
+                    'time2':0,
+                    'maze1':[0],
+                    'maze2':[0],
+                    'maze1done':'no',
+                    'maze2done':'no',
+                    'player1lost':false,
+                    'player2lost':false,
+                    'full':false
+                    
+                  });}
+                  else{
+                    db.collection('room').doc(here.props.loco).update({
+                        'player1': 'nobody is here',
+                        'player2': 'nobody is here',
+                        'time1':0,
+                        'time2':0,
+                        'maze1':[0],
+                        'maze2':[0],
+                        'maze1done':'no',
+                        'maze2done':'no',
+                        'player1lost':false,
+                        'player2lost':false,
+                        'full':false
+                           
+                      });
+                    }
+                  })
+        }
+    }
 
     /*componentWillUnmount(){
         const db = firebase.firestore();
@@ -176,6 +219,14 @@ class Test extends Component{
               })
         //return <Redirect to={routes.HITWALL}/>;
       }
+      const db2 = firebase.firestore();
+      const here2 = this
+      db2.collection('room').doc(here2.props.loco)
+      .onSnapshot(function(doc) {
+          if (doc.data().player1 == 'nobody is here' || doc.data().player2 == 'nobody is here' ){
+              here2.setState({theyLeft:true})
+          }
+          });
       if (this.state.youWon) {
         return <Redirect to={routes.YOUWON}/>;
       }
@@ -231,12 +282,15 @@ class Test extends Component{
       .onSnapshot(function(doc) {
           console.log("Current data battle room: ", doc.data());
           });
+          if (this.state.theyLeft) {
+            return <Redirect to={routes.HELEFT}/>;
+          }
 
 
 
       return (
           <>
-        <h1>This is the maze from {this.props.opponent}</h1>
+        
           <div className="holderDiv">
           
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
@@ -249,7 +303,7 @@ class Test extends Component{
         </div>
         <button type="submit" onClick={this.attemptMaze} className="startEndButton" style = {{'fontSize':'30px'}}>Attempt Maze</button>
         </form>
-        <h1 className="displayName">{this.state.name}</h1>
+       
         <TimerTwo loco={this.props.loco} user={this.props.user} bringUpTime={this.bringUpTime} finished={this.state.finished}/>
         </div>
         </>

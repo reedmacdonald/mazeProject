@@ -27,6 +27,9 @@ class LoadingTwo extends Component{
       }
       componentWillUnmount(){
         clearTimeout(timer)
+        if(!this.state.theyLeft && !this.state.accepted){
+          console.log('wait your just going to leave loading room 2?')
+        }
       }
       componentDidMount(){
         const here = this

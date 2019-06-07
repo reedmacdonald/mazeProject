@@ -17,7 +17,7 @@ const HeLeft = () =>
 <br/>
 <br/>
 <br/>
-<p>You would've beaten him anyway, his maze was super weak</p>
+<p>You would've beaten them anyway, their maze was super weak</p>
 <br/>
 <br/>
 

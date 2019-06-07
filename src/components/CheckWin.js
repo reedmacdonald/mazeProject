@@ -97,12 +97,13 @@ class CheckWin extends Component{
 <div class="divHolderTwo">
 <h1>{this.state.player1Name}'s time: {60-this.state.player1Score}</h1>
 <h1>{this.state.player2Name}'s time: {60-this.state.player2Score}</h1>
-{this.state.player1Score>this.state.player2Score?<h1>{this.state.player1Name} Wins!</h1>:<h1>{this.state.player2Name} Wins!</h1>}
+{(this.state.player1Score>this.state.player2Score)&& this.state.player1lost != 'true'?<h1>{this.state.player1Name} Wins!</h1>:undefined}
+{(this.state.player2Score>this.state.player1Score)&& this.state.player2lost != 'true'?<h1>{this.state.player2Name} Wins!</h1>:undefined}
 <br/>
 <br/>
 
-{this.state.player1Score>this.state.player2Score && this.state.player1lost=='true'?<h2> {this.state.player1Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, not sure why I ever said they did </h2>:undefined}
-{this.state.player2Score>this.state.player1Score && this.state.player2lost=='true'?<h2>{this.state.player2Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win, not sure why I ever said they did</h2>:undefined}
+{this.state.player1Score>this.state.player2Score && this.state.player1lost=='true'?<h2> {this.state.player1Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win </h2>:undefined}
+{this.state.player2Score>this.state.player1Score && this.state.player2lost=='true'?<h2>{this.state.player2Name} had the faster time, but somewhere along the line they ran into a wall or stepped out of bounds so they dont get the win</h2>:undefined}
  
 </div>
           )

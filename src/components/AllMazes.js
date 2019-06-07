@@ -38,7 +38,7 @@ class AllMazes extends Component{
             bestMazes:finalMaze.map((element)=>
     
             <div><li style={{  fontFamily: "Helvetica Neue, Arial, sans-serif",
-            fontStyle: 'italic'}}><b><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</b></li><br/></div>)
+            fontStyle: 'italic', listStyleType:'none'}}><b><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</b></li><br/></div>)
 
         })
         return finalMaze
@@ -50,12 +50,12 @@ class AllMazes extends Component{
     render(){
 
         return(
-            <div>
+            <div className="divHolderTwo">
             <h1>All Mazes</h1>
             <br/>
-            <ol>
+            <ul>
                 {this.state.bestMazes}
-            </ol>
+            </ul>
             </div>
         )
     }

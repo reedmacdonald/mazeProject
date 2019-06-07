@@ -27,7 +27,8 @@ class GameRoom extends Component{
             userName:null,
             youSubmitted:false,
             playerNumber:null,
-            opponent:'some Rando'
+            opponent:'Loading...',
+            theyLeft:false
         }
         this.maze=[]
     }
@@ -158,6 +159,47 @@ class GameRoom extends Component{
                  this.maze.push(brick)
             }
         }
+        componentWillUnmount(){
+            const db = firebase.firestore();
+            const here = this
+            if(!this.state.youSubmitted){
+                console.log('wait, youre just going to leave the game room?')
+                var docRef = db.collection('room').doc(here.props.location);
+                docRef.get().then(function(doc) {
+                    if (doc.data().player1==here.props.user){
+                      db.collection('room').doc(here.props.location).update({
+                        'player1': 'nobody is here',
+                        'player2': 'nobody is here',
+                        'time1':0,
+                        'time2':0,
+                        'maze1':[0],
+                        'maze2':[0],
+                        'maze1done':'no',
+                        'maze2done':'no',
+                        'player1lost':false,
+                        'player2lost':false,
+                        'full':false
+                        
+                      });}
+                      else{
+                        db.collection('room').doc(here.props.location).update({
+                            'player1': 'nobody is here',
+                            'player2': 'nobody is here',
+                            'time1':0,
+                            'time2':0,
+                            'maze1':[0],
+                            'maze2':[0],
+                            'maze1done':'no',
+                            'maze2done':'no',
+                            'player1lost':false,
+                            'player2lost':false,
+                            'full':false
+                               
+                          });
+                        }
+                      })
+            }
+        }
     
 
 
@@ -166,6 +208,14 @@ class GameRoom extends Component{
       if (this.state.youSubmitted){
         return <Redirect to={routes.LOADINGTWO}/>;
       }
+      const db2 = firebase.firestore();
+        const here2 = this
+      db2.collection('room').doc(here2.props.location)
+      .onSnapshot(function(doc) {
+          if (doc.data().player1 == 'nobody is here' || doc.data().player2 == 'nobody is here' ){
+              here2.setState({theyLeft:true})
+          }
+          });
 
       if (this.state.hitWall) {
         const db = firebase.firestore();
@@ -189,6 +239,10 @@ class GameRoom extends Component{
       }
       if (this.state.youWon) {
         return <Redirect to={routes.SUBMIT}/>;
+      }
+
+      if (this.state.theyLeft) {
+        return <Redirect to={routes.HELEFT}/>;
       }
       
       if (this.state.outBounds) {
@@ -256,10 +310,7 @@ class GameRoom extends Component{
       <button className="startEndButton" onClick={this.changeToRed} style={{'display':this.state.testShowing,'fontSize':'30px'}}>Test Maze</button>
       <button className="startEndButton" onClick={this.changeToBlack} style={{'display':this.state.buildShowing,'fontSize':'30px'}}>Build Maze</button>
       
-      <form className="nameForm" onSubmit={this.nameThisMaze}>
-          <input id = "uniqueID" name = "mazeName" className="giveName" type="text" placeholder=" Name of Your maze"></input>
-          <button type="submit"> Give name</button>
-      </form>
+
       <TimerOne test={this.state.testShowing}/>
       </div>
       </div>
