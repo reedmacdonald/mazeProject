@@ -11,7 +11,7 @@ const NobodyComing = () =>
 <h1>Well, it looks like nobody is coming</h1>
 <br/>
 
-<h4>We dont want to waste your time so we cleared the romm</h4>
+<h4>We dont want to waste your time so we cleared the room</h4>
 <br/>
 <br/>
 <br/>

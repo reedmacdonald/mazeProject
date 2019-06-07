@@ -27,7 +27,7 @@ class Loading extends Component{
         };
       }
       componentWillUnmount(){
-          timer=clearTimeout()
+          clearTimeout(timer)
       }
       componentDidMount(){
         const here = this
@@ -53,7 +53,7 @@ class Loading extends Component{
             )
             console.log('heeeeeeeelllllllloooooooo from the first loading page')
             this.setState({theyLeft:true})
-        },300000)
+        },30000)
  
         //
         console.log(this,'<----this')
