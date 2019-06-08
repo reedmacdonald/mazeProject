@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Redirect } from 'react-router-dom'
 import '../App.css';
 import * as routes from '../constants/routes'
+import firebase from './Firebase'
 
 
 class TimerTwo extends Component {
@@ -57,16 +58,32 @@ class TimerTwo extends Component {
     
       render() {
         const { time } = this.state;
+        const db = firebase.firestore();
+        const here = this
         if (this.state.outTime) {
             return <Redirect to={routes.OUTTIME}/>;
           }
-    
+        if (this.props.finished){
+        var docRef = db.collection('room').doc(here.props.loco);
+        docRef.get().then(function(doc) {
+            if (doc.data().player1==here.props.user){
+              db.collection('room').doc(here.props.loco).update({
+                'time1': time    
+              });}
+              else{
+                db.collection('room').doc(here.props.loco).update({
+                    'time2': time    
+                  });
+                }
+              })
+            }
+          
         return (
           <div className="timer">
             <div className="timer__label">{time}</div>
           </div>
         );
       }
-    }
+      }
 
 export default withRouter(TimerTwo);

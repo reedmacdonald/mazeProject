@@ -28,14 +28,14 @@ class TopMazes extends Component{
           }
           allMazes.sort(compare)
           let finalMaze=[]
-          for(let i=0;i<5;i++){
+          for(let i=0;i<allMazes.length;i++){
             finalMaze[i]=allMazes[i]
           }
         console.log(finalMaze)
         this.setState({
             bestMazes:finalMaze.map((element)=>
     
-            <div><li><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</li><br/></div>)
+            <div><li style={{listStyleType:'none'}}><b><NavLink to={`${routes.TEST}/${element._id}`}> {element.name} </NavLink> successes: {element.successes} attempts: {element.attempts}</b></li><br/></div>)
 
         })
         return finalMaze
@@ -47,8 +47,8 @@ class TopMazes extends Component{
     render(){
 
         return(
-            <div>
-            <h1>Top Mazes</h1>
+            <div className="divHolderTwo">
+            <h1>Popular Mazes</h1>
             <br/>
             <ol>
                 {this.state.bestMazes}

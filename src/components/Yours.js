@@ -14,7 +14,7 @@ class Yours extends Component{
     
     
     getBestOf = async (e) => {
-        const bestofResponse = await fetch('/maze/all')
+        const bestofResponse = await fetch(`/maze/all/${this.props.userName}`)
         const parsedResponse = await bestofResponse.json();
         allMazes = parsedResponse.data
         function compare( a, b ) {
@@ -73,7 +73,7 @@ class Yours extends Component{
     render(){
 
         return(
-            <div>
+            <div className="divHolderTwo">
             <h1>Your Mazes</h1>
             <br/>
             <ol>
