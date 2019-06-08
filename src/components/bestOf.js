@@ -14,7 +14,7 @@ class TopMazes extends Component{
     
     
     getBestOf = async (e) => {
-        const bestofResponse = await fetch('https://reedmazebackend.herokuapp.com/maze/all')
+        const bestofResponse = await fetch('https://mazebackendreed.herokuapp.com/maze/all')
         const parsedResponse = await bestofResponse.json();
         allMazes = parsedResponse.data
         function compare( a, b ) {

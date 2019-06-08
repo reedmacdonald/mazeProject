@@ -27,7 +27,7 @@ class Test extends Component{
     
 
     getMaze = async (e) => {
-        const mazeResponse = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/${this.props.match.params.testId}`)
+        const mazeResponse = await fetch(`https://mazebackendreed.herokuapp.com/maze/test/${this.props.match.params.testId}`)
         const parsedResponse = await mazeResponse.json();
         console.log(parsedResponse.data,'<----parsedResponse.data')
         testMaze = parsedResponse.data.maze;
@@ -45,7 +45,7 @@ class Test extends Component{
     }
 
     youLost = async () => {
-        const loser = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
+        const loser = await fetch(`https://mazebackendreed.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
@@ -57,7 +57,7 @@ class Test extends Component{
     }
 
     outOfBounds = async () =>{
-        const loser = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
+        const loser = await fetch(`https://mazebackendreed.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
@@ -85,7 +85,7 @@ class Test extends Component{
     }
 
     hit = async () => {
-        const loser = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
+        const loser = await fetch(`https://mazebackendreed.herokuapp.com/maze/test/loser/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
@@ -100,7 +100,7 @@ class Test extends Component{
 
     submitMaze = async (e) => {
         e.preventDefault();
-        const winner = await fetch(`https://reedmazebackend.herokuapp.com/maze/test/${this.props.match.params.testId}`, {
+        const winner = await fetch(`https://mazebackendreed.herokuapp.com/maze/test/${this.props.match.params.testId}`, {
             method: 'PUT',
             credentials: 'include',
             headers:{
@@ -142,7 +142,7 @@ class Test extends Component{
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsThree"></div>
         <form onSubmit={this.state.testing?this.handleSubmit:undefined}>
-        <button onClick = {this.state.testing?this.submitMaze:this.didntStart} type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Finish Maze</button>
+        <button onClick = {this.state.testing?this.submitMaze:this.didntStart} type="submit" className="finishMaze" style={{'display':this.state.submitShowing}}>Submit Maze</button>
         <div className="grid">
         {this.state.maze}
         </div>
