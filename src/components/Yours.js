@@ -73,7 +73,7 @@ class Yours extends Component{
     render(){
 
         return(
-            <div>
+            <div className="divHolderTwo">
             <h1>Your Mazes</h1>
             <br/>
             <ol>

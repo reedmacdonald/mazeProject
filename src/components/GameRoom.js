@@ -293,7 +293,7 @@ class GameRoom extends Component{
       })
       return (
           <div>
-              <h1 style={{marginLeft:'30%'}}>You are making a maze for {this.state.opponent}</h1>
+              <h1 style={{marginLeft:'24%'}}>You are making a maze for {this.state.opponent}</h1>
       <div className="holderDiv" onDoubleClick={this.changeToClicked}> 
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBounds"></div>
         <div onMouseOver={(this.state.testing) ? this.outOfBounds:undefined} className="outOfBoundsTwo"></div>

@@ -85,9 +85,9 @@ class LoadingTwo extends Component{
           return(
 <div className="divHolderTwo">
 
-<h1>You've sent {this.props.opponent} your maze</h1>
+<h1>You've sent in your maze</h1>
 <br/>
-<h3>Waiting for {this.props.opponent} to finish mazing</h3>
+<h3>Waiting for your opponent to finish mazing</h3>
 <ul className="instructionList">
     <li>You will have three minutes to make the maze again</li>
     <li>Take all the time if you'd like</li>

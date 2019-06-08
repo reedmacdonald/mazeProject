@@ -128,17 +128,11 @@ class Loading extends Component{
     <li><b>Speed matters</b></li>
     <li>the person who completes the others persons maze first wins</li>
     <li>cool?</li>
-    <li>.</li>
+    
 </ul>
 <br/>
 <h3>Waiting for another player still</h3>
-<ul className="instructionList">
-    <li>.</li>
-    <li>.</li>
-    <li>.</li>
-    <li>.</li>
-    <li>.</li>
-</ul>
+
 </div>
           )
       }
