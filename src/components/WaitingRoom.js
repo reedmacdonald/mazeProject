@@ -46,7 +46,7 @@ class WaitingRoom extends Component{
         this.setState({
             bestMazes:[1,2,3,4].map((element, index)=>
     
-            <div><li><NavLink onClick={()=>{this.props.sendLocation(`gameRoom${element}`)}} to={`${routes.LOADING}`}><b style={{color:'black',marginLeft:'0'}}> GameRoom {element}</b></NavLink> </li><button onClick={()=>{this.clearRoom(element)}}><b style={{marginLeft:'0'}}>clear room</b></button></div>)
+            <div><li><NavLink onClick={()=>{this.props.sendLocation(`gameRoom${element}`)}} to={`${routes.LOADING}`}><b style={{color:'black',marginLeft:'0'}}> GameRoom {element}</b></NavLink> </li></div>)
 
         })
         
