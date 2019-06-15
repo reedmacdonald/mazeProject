@@ -29,7 +29,9 @@ class TopMazes extends Component{
           allMazes.sort(compare)
           let finalMaze=[]
           for(let i=0;i<allMazes.length;i++){
+              if (allMazes[i].name != ""){
             finalMaze[i]=allMazes[i]
+              }
           }
         console.log(finalMaze)
         this.setState({
