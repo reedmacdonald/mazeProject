@@ -34,7 +34,7 @@ class Instructions extends Component{
     <li>Click on "Build Maze" to begin building the maze</li>
     <li>You are allowed to go out of bounds when building the game</li>
     <li><b>Double click to lift the "pen" up. Double click again to put it back down.</b></li>
-    <li>Name your maze before submitting, otherwise it won't be accessable. Type in the name and click "give name". To change the name just do that again. Nothing happens onscreen.</li>
+    <li>If you don't name your maze before submitting it will just be called "random" + 4 random digits</li>
     <li>You test the maze to prove that it works. You cannot lift up your pen, go out of bounds, or touch the walls while doing this</li>
     <li>If you'd like to delete a maze, login and then click the delete button in the "yours" tab</li>
 </ul>
