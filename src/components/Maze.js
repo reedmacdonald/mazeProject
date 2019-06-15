@@ -99,6 +99,13 @@ class Maze extends Component{
     }
 
     handleSubmit = async (e) => {
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+          }
+        if (this.state.maze==''){
+            let randNum=getRandomInt(8000)
+            this.setState({name:`random${randNum}`})
+        }
 
         e.preventDefault();
         const thingToSend={
