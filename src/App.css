@@ -114,7 +114,7 @@ button:hover{
 .divHolderTwo {
   position: sticky;
   background-color: white;
-  opacity: .7;
+  opacity: .85;
   
   height:530px;
   min-height: fit-content;

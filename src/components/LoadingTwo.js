@@ -56,7 +56,7 @@ class LoadingTwo extends Component{
             )
             console.log('heeeeeellllllloooooo from the second loading page')
             this.setState({theyLeft:true})
-        },60000)
+        },120000)
 
 
 
